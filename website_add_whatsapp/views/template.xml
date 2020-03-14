@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="layout" inherit_id="website.layout" active="True" customize_show="True" name="WhatsApp">
+          <xpath expr="//t[@t-call='web.layout']" position="inside">
+            <div class="whatsappw" t-att-data-contact-id="res_company.whatsapp_number"/>
+            <div class="wbutton_title" t-att-data-button_title-id="res_company.button_title"/>
+            <div class="whatsapp_position" t-att-data-whatsapp_position-id="res_company.whatsapp_position"/>
+
+			<script type="text/javascript">
+			    (function () {
+			        var options = {
+
+			            whatsapp: $('.whatsappw').data('contact-id'), // WhatsApp number
+			            call_to_action: $('.wbutton_title').data('button_title-id'), // Call to action
+			            position: $('.whatsapp_position').data('whatsapp_position-id'), // Position may be 'right' or 'left'
+			        };
+			        var proto = document.location.protocol, host = "whatshelp.io", url = proto + "//static." + host;
+			        var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+			        s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+			        var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+			    })();
+			</script>
+          </xpath>
+        </template>
+    </data>
+</odoo>
