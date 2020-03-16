@@ -1,46 +1,44 @@
 <odoo>
-    <data>
-    <template id="grefoot.website_sale_address" name="Website Sale Address" inherit_id="website_sale.address" customize_show="True">
-            <xpath expr="//div/input[@name='street2']//ancestor::div[1]" position="replace">
-                   <!-- REMOVE -->
-            </xpath>
+       <data>
+              <template id="grefoot.website_sale_address" name="Website Sale Address" inherit_id="website_sale.address" customize_show="True">
+                     <xpath expr="//div/input[@name='street2']//ancestor::div[1]" position="replace">
+                            <!-- REMOVE -->
+                     </xpath>
 
-<xpath expr="//div/input[@name='zip']//ancestor::div[1]" position="replace">
-                   <!-- REMOVE -->
-            </xpath>
-<xpath expr="//div/input[@name='city']//ancestor::div[1]" position="replace">
-                   <!-- REMOVE -->
+                     <xpath expr="//input[@name='city']//ancestor::div[1]//following::div[1]" position="replace"> </xpath>
+                     <xpath expr="//div/input[@name='city']//ancestor::div[1]" position="replace">
+                            <!-- REMOVE -->
 
-            </xpath>
+                     </xpath>
 
 
-             <xpath expr="//div/input[@name='email']//ancestor::div[1]" position="replace">
-                    <div t-attf-class="form-group #{error.get('email') and 'o_has_error' or ''} col-lg-6" id="div_email">
-                       <label class="col-form-label" for="email">Email</label>
-                       <input type="email" name="email" t-attf-class="form-control #{error.get('email') and 'is-invalid' or ''}" t-att-value="'email' in checkout and checkout['email']"/>
-                    </div>
-			  </xpath> 
-            <xpath expr="//div/input[@name='street']//ancestor::div[1]" position="replace">
+                     <xpath expr="//div/input[@name='email']//ancestor::div[1]" position="replace">
+                            <div t-attf-class="form-group #{error.get('email') and 'o_has_error' or ''} col-lg-6" id="div_email">
+                                   <label class="col-form-label" for="email">Email</label>
+                                   <input type="email" name="email" t-attf-class="form-control #{error.get('email') and 'is-invalid' or ''}" t-att-value="'email' in checkout and checkout['email']"/>
+                            </div>
+                     </xpath>
+                     <xpath expr="//div/input[@name='street']//ancestor::div[1]" position="replace">
 
-             <div t-attf-class="form-group #{error.get('street') and 'o_has_error' or ''} col-lg-12 div_street">
-                 <label class="col-form-label" for="street">Address</label>
-                  <input type="text" name="street" t-attf-class="form-control #{error.get('street') and 'is-invalid' or ''}" t-att-value="'street' in checkout and checkout['street']"/>
-             </div>
-
-
-			  </xpath> 
-		</template>
+                            <div t-attf-class="form-group #{error.get('street') and 'o_has_error' or ''} col-lg-12 div_street">
+                                   <label class="col-form-label" for="street">Address</label>
+                                   <input type="text" name="street" t-attf-class="form-control #{error.get('street') and 'is-invalid' or ''}" t-att-value="'street' in checkout and checkout['street']"/>
+                            </div>
 
 
-     <template id="grefoot.website_sale_address_b2b" name="Website Sale Address" inherit_id="website_sale.address_b2b" customize_show="True">
-            <xpath expr="//div/input[@name='company_name']//ancestor::div[1]" position="replace">
-                   <!-- REMOVE -->
-            </xpath>
+                     </xpath>
+              </template>
 
-                <xpath expr="//div/input[@name='vat']//ancestor::div[1]" position="replace">
-                   <!-- REMOVE -->
-            </xpath>
-		</template>
 
-    </data>
+              <template id="grefoot.website_sale_address_b2b" name="Website Sale Address" inherit_id="website_sale.address_b2b" customize_show="True">
+                     <xpath expr="//div/input[@name='company_name']//ancestor::div[1]" position="replace">
+                            <!-- REMOVE -->
+                     </xpath>
+
+                     <xpath expr="//div/input[@name='vat']//ancestor::div[1]" position="replace">
+                            <!-- REMOVE -->
+                     </xpath>
+              </template>
+
+       </data>
 </odoo>
