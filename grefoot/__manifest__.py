@@ -20,14 +20,14 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','product'],
+    'depends': ['base','product','ks_theme_kinetik'],
 
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
-        # 'models/inherit/product_template/product_template_view.xml'
+        'models/inherit/contact_us_form/grefoot_contact_us_form_website.xml'
     ],
     # only loaded in demonstration mode
     'demo': [
