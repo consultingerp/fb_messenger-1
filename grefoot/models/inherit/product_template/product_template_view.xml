@@ -1,0 +1,22 @@
+<odoo>
+  <data>
+
+    <!-- explicit list view definition -->
+    
+    <record model="ir.ui.view" id="grefoot_inherit_product_template_view_form">
+      <field name="name">grefoot_inherit_product_template_view_form</field>
+      <field name="model">product.template</field>
+      <field name="type">form</field>
+      <field name="inherit_id" ref="product.product_template_only_form_view"/>
+      <field name="arch" type="xml">
+        <data>
+          <xpath expr="//field[@name='categ_id']" position="replace">
+          <field name="cat_id"/>
+        </xpath>
+        </data>
+      </field>
+    </record>
+   
+
+  </data>
+</odoo>
