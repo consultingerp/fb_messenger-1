@@ -27,9 +27,11 @@ class Grefoot(http.Controller):
         return Response(json.dumps(body),status=200,headers=headers)
 
 
+    @http.route('/shop/update_state', type='json', auth="public", website=True)
+    def update_state(self, **kw):
+        import pdb;pdb.set_trace()
+        # results=http.request.env['product.product'].sudo().search_read([],fields=['name','website_url','product_tmpl_id'])
 
-#     @http.route('/grefoot/grefoot/objects/<model("grefoot.grefoot"):obj>/', auth='public')
-#     def object(self, obj, **kw):
-#         return http.request.render('grefoot.object', {
-#             'object': obj
-#         })
+        headers = {'Content-Type': 'application/json'}
+        body={'results':{'code':200,'message':{'name':'test'}}}
+        return Response(json.dumps(body),status=200,headers=headers)

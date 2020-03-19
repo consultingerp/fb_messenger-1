@@ -28,7 +28,7 @@
         'views/views.xml',
         'views/templates.xml',
         'models/inherit/contact_us_form/grefoot_contact_us_form_website.xml',
-        # 'models/inherit/grefoot_website_sale_address/grefoot_website_sale_address.xml'
+        'models/inherit/grefoot_website_sale_address/grefoot_website_sale_address.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

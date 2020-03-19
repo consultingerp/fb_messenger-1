@@ -1,13 +1,43 @@
 <odoo>
        <data>
-              <template id="grefoot.website_sale_address" name="Website Sale Address" inherit_id="website_sale.address" customize_show="True">
+              <template id="grefoot.billing_form" name="Website Sale Address" inherit_id="checkout.billing_form" customize_show="True">
+                     <xpath expr="//div/input[@name='email']//ancestor::div[1]" position="replace">
+                            <div t-attf-class="form-group col-lg-12 col-md-12 col-sm-6 col-12" id="email">
+                                   <label class="control-label" for="email">
+                                    Email
+                                   </label>
+
+                                   <input type="email" name="email" class="form-control" t-att-value="'email' in website_sale_order.partner_id and website_sale_order.partner_id['email']"/>
+                            </div>
+                     </xpath>
+                     <xpath expr="//div/input[@name='company_name']//ancestor::div[1]" position="replace"></xpath>
+                     <xpath expr="//div/input[@name='vat']//ancestor::div[1]" position="replace"></xpath>
+                     <xpath expr="//div/input[@name='zip']//ancestor::div[1]" position="replace"></xpath>
+                     <xpath expr="//div/input[@name='city']//ancestor::div[1]" position="replace">
+                            <div t-attf-class="form-group city col-lg-12 col-md-12 col-sm-6 col-12">
+                                   <label class="control-label" for="city">City</label>
+                                   <input type="text" name="city" class="form-control" t-att-value="'city' in website_sale_order.partner_id and website_sale_order.partner_id['city']"/>
+                            </div>
+
+                     </xpath>
+              </template>
+
+
+              <template id="grefoot.shipping_address" name="Website Sale Address" inherit_id="checkout.shipping_address" customize_show="True">
+                     <xpath expr="//div/input[@name='city']//ancestor::div[1]" position="replace">
+                            <div t-attf-class="form-group city col-lg-12 col-md-12 col-sm-6 col-12">
+                                   <label class="control-label" for="city">City</label>
+                                   <input type="text" name="city" class="form-control" t-att-value="'city' in website_sale_order.partner_id and website_sale_order.partner_id['city']"/>
+                            </div>
+
+                     </xpath>
+              </template>
+              <!-- <template id="grefoot.website_sale_address" name="Website Sale Address" inherit_id="website_sale.address" customize_show="True">
                      <xpath expr="//div/input[@name='street2']//ancestor::div[1]" position="replace">
-                            <!-- REMOVE -->
                      </xpath>
 
                      <xpath expr="//input[@name='city']//ancestor::div[1]//following::div[1]" position="replace"> </xpath>
                      <xpath expr="//div/input[@name='city']//ancestor::div[1]" position="replace">
-                            <!-- REMOVE -->
 
                      </xpath>
 
@@ -33,13 +63,11 @@
 
               <template id="grefoot.website_sale_address_b2b" name="Website Sale Address" inherit_id="website_sale.address_b2b" customize_show="True">
                      <xpath expr="//div/input[@name='company_name']//ancestor::div[1]" position="replace">
-                            <!-- REMOVE -->
                      </xpath>
 
                      <xpath expr="//div/input[@name='vat']//ancestor::div[1]" position="replace">
-                            <!-- REMOVE -->
                      </xpath>
-              </template>
+              </template> -->
 
        </data>
 </odoo>

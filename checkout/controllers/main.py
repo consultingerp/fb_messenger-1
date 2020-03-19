@@ -32,6 +32,7 @@ class WebsiteSaleInh(WebsiteSale):
     def check_address(self, **kw):
         """Called when the form is complete and valid.
         """
+        import pdb;pdb.set_trace()
         partner_obj = request.env['res.partner'].with_context(
             show_address=1).sudo()
         order = request.website.sale_get_order()

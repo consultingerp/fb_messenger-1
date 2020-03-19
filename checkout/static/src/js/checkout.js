@@ -132,6 +132,7 @@ odoo.define('checkout.checkout', function(require){
     // when all required fields are filled save the contact
     $.each($all_shipping_inputs, function(index, value) {
         $(value).on('change', function () {
+            debugger;
             var $inputs_filled = $shipping_form.find('input[required]:filled');
             if ($shipping_inputs.length == $inputs_filled.length && !validatorObj.numberOfInvalids()) {
                 var form_fields = {
@@ -463,8 +464,12 @@ odoo.define('checkout.checkout', function(require){
             $carrier_badge.children('span').text(result.new_amount_delivery);
             $carrier_badge.removeClass('d-none');
             $compute_badge.addClass('d-none');
+            if($pay_button.data('disabled_reasons'))
+            {
+
             $pay_button.data('disabled_reasons').carrier_selection = false;
             $pay_button.prop('disabled', _.contains($pay_button.data('disabled_reasons'), true));
+            }
         }
         else {
             console.error(result.error_message);

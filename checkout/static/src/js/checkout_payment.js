@@ -5,6 +5,7 @@ var ajax = require('web.ajax'),
     website = require('website.website'),
     core = require('web.core'),
     Widget = require("web.Widget");
+
     require('web.dom_ready');
 
     var paymentButton = Widget.extend({
