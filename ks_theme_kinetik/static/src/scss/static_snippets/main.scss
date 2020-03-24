@@ -2327,23 +2327,44 @@ input:focus, textarea:focus {
     position: absolute;
     top: 80px;
 }
-// .ks-price-3 {
-//     &:hover {
-//         .ks-btn-theme {
-//             color: $primary;
-//             background: #ffffff;
-//             &:hover {
-//                 color: #ffffff;
-//             }
-//         }
-//     }
-// }
-// .ks-price-1 {
-//     &:hover {
-//         .btn-primary {
-//             .o_default_snippet_text {
-//                 color: $primary !important;
-//             }
-//         }
-//     }
-// }
+
+
+.carousel-control-prev.ks-control-prev{
+        left: -40px;
+}
+.carousel-control-next.ks-control-next{
+        right: -40px;
+}
+.carousel-control-prev.ks-control-prev,
+.carousel-control-next.ks-control-next{
+    height: 30px;
+    width: 30px;
+    transform: translateY(50%);
+    top: 40%;
+    background: #fff;
+    padding: 7px 3px;
+    box-sizing: content-box;
+    text-align: center;
+    cursor: pointer;
+    transition: all ease-in-out 0.5s;
+    opacity: 1;
+
+    i{
+        font-size: 40px;
+    }
+}
+
+.ks-kinetik-slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+
+   &:hover{
+        .carousel-control-prev.ks-control-prev{
+           left: 0px;
+        }
+        .carousel-control-next.ks-control-next{
+            right: 0px;
+        }
+   }
+}

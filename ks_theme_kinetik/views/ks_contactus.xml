@@ -16,7 +16,7 @@
                           </section>
                       </div>
 <!--                      <div class="oe_structure oe_empty o_editable">-->
-                          <div class="container py-sm-5 my-3">
+                          <div class="container py-sm-5 py-3">
                               <div class="row ks-contact-form-container">
                                   <div name="mail_button">
                                       <a role="button" t-attf-href="mailto:{{ res_company.email }}"

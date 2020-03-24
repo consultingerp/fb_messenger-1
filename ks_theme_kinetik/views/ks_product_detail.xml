@@ -61,68 +61,12 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6 product-detail-carousel">
-                            <t t-set="variant_img" t-value="product_variant and product_variant.image_variant"/>
-                            <t t-set="image_ids" t-value="product.product_image_ids"/>
-                            <div id="o-carousel-product" class="ks_horizontal_product_slider carousel slide"
-                                 data-ride="carousel" data-interval="0">
-                                <div class="carousel-outer">
-                                    <div class="owl-carousel ks_main owl-theme">
-                                        <div data-oe-id="0" t-if="variant_img" class="ks_img_vrnt carousel-item active"
-                                             itemprop="image"
-                                             t-field="product_variant.image"
-                                             t-options="{'widget': 'image', 'class': 'product_detail_img js_variant_img', 'alt-field': 'name', 'zoom': 'image', 'unique': str(product['__last_update']) + (str(product_variant['__last_update']) or '')}"/>
-                                        <div t-att-data-oe-id="1 if variant_img else '0'" t-attf-class="carousel-item active"
-                                             itemprop="image" t-field="product.image"
-                                             t-options="{'widget': 'image', 'class': 'product_detail_img', 'alt-field': 'name', 'zoom': 'image', 'unique': product['__last_update']}"/>
-                                        <t t-if="len(image_ids)" t-foreach="image_ids" t-as="pimg">
-                                            <t t-set="attachment_id"
-                                               t-value="request.env['ir.attachment'].search([('res_field', '=', 'product_video'), ('res_id', '=', pimg.id)]).id"/>
-                                            <t t-if="attachment_id">
-                                                <div t-att-data-oe-id="pimg_index + (variant_img and 2 or 1)" class="carousel-item active">
-                                                    <iframe t-att-id="pimg.id" class="embed-responsive-item"
-                                                            t-att-src="'/web/content/' + str(attachment_id)"
-                                                            allowFullScreen="true" frameborder="0" autoplay="1"
-                                                            allow="autoplay"/>
-                                                </div>
-                                            </t>
-                                            <t t-else="">
-                                                <div t-att-data-oe-id="pimg_index + (variant_img and 2 or 1)" class="carousel-item active" t-field="pimg.image"
-                                                     t-options='{"widget": "image", "class": "product_detail_img", "alt-field": "name", "zoom": "image" }'/>
-                                            </t>
-                                        </t>
-                                    </div>
-                                </div>
-                                <ol class="carousel-indicators" t-if="len(image_ids) or variant_img">
-                                    <div id="ks_multi_image_horiz" class="ks_multi_image_horizontal owl-carousel ks_thumb owl-theme">
-                                        <div t-if="variant_img" data-target="#o-carousel-product" data-slide-to="0"
-                                            class="ks_img_vrnt ks-vs-img ks_active_variant_image active">
-                                            <img class="img img-fluid js_variant_img_small"
-                                                 t-attf-src="/web/image/product.product/{{product_variant.id}}/image/90x90"
-                                                 t-att-alt="product.name"/>
-                                        </div>
-                                        <div  data-target="#o-carousel-product"
-                                            t-att-data-slide-to="1 if variant_img else '0'"
-                                            t-att-class="'ks-vs-img ks_active_variant_image' if variant_img else 'ks-vs-img ks_active_variant_image active'">
-                                            <img class="img img-fluid"
-                                                 t-attf-src="/web/image/product.template/{{product.id}}/image/90x90"
-                                                 t-att-alt="product.name"/>
-                                        </div>
-                                        <t t-if="len(image_ids)" t-foreach="image_ids" t-as="pimg">
-                                            <div data-target="#o-carousel-product"
-                                                class="ks-vs-img ks_active_variant_image"
-                                                t-att-data-slide-to="pimg_index + (variant_img and 2 or 1)">
-                                                <t t-set="attachment_id"
-                                                   t-value="request.env['ir.attachment'].search([('res_field', '=', 'product_video'), ('res_id', '=', pimg.id)]).id"/>
-                                                <img class="img img-fluid"
-                                                     t-attf-src="/website/image/product.image/{{pimg.id}}/image/90x90"
-                                                     t-att-alt="pimg.name"/>
-                                                <i t-if="attachment_id"
-                                                   class="fa fa-2x fa-play-circle-o o_product_video_thumb"/>
-                                            </div>
-                                        </t>
-                                    </div>
-                                </ol>
-                            </div>
+                            <t t-call="ks_theme_kinetik.ks_product_image_slider">
+                                <t t-set="div_01_class" t-value="'carousel-outer'"/>
+                                <t t-set="ol_class" t-value="'carousel-indicators'"/>
+                                <t t-set="ol_div_class"
+                                   t-value="'ks_multi_image_horizontal owl-carousel ks_thumb owl-theme'"/>
+                            </t>
                         </div>
                         <div class="col-md-6" id="product_details">
                             <div class="ks-breadcrumb-container" >
@@ -139,7 +83,21 @@
                                     </li>
                                 </ol>
                             </div>
-                            <div class="ks_product_data_info">
+                            <div class="ks_product_data_info flex-wrap">
+                                 <div class="w-100 ks_product_timer">
+                                     <div class="product_timer flex-wrap">
+                <!--                         <t t-if="seconds">-->
+                                             <div class="ks_timer_box mb-4 d-none">
+                                                <div class="ks_product_timer_title text-center text-lg-left col-12  col-lg-4 col-xl-6">Offer Ends In !!</div>
+                                                <input type="hidden" name="timer"
+                                                   t-att-value="seconds"/>
+                                                <!--<t t-if="seconds">-->
+                                                <div class="clock col"></div>
+                                                <!--</t>-->
+                                             </div>
+                <!--                         </t>-->
+                                    </div>
+                                </div>
                                 <h1 itemprop="name" t-field="product.name" class="ks-product-name">Product Name</h1>
                             </div>
                             <t t-if="request.website.viewref('ks_theme_kinetik.ks_product_comment').active">
@@ -488,14 +446,14 @@
 
     <template id="ks_multiimage_layout" inherit_id='ks_theme_kinetik.kps_product' active="False"
               customize_show="True" name="Kinetik Multi Image Vertically">
-        <xpath expr="//div[@id='o-carousel-product']/div" position="attributes">
-            <attribute name="class"> carousel-outer ks_vert_slide</attribute>
-        </xpath>
-        <xpath expr="//div[@id='o-carousel-product']/ol" position="attributes">
-            <attribute name="class"> ks_vs_slide</attribute>
-        </xpath>
-        <xpath expr="//div[@id='o-carousel-product']/ol/div" position="attributes">
-            <attribute name="class">ks_vert_slider owl-carousel ks_thumb owl-theme</attribute>
+        <xpath expr="//div[hasclass('product-detail-carousel')]" position="replace">
+            <div class="col-md-6 product-detail-carousel">
+                <t t-call="ks_theme_kinetik.ks_product_image_slider">
+                    <t t-set="div_01_class" t-value="'carousel-outer ks_vert_slide'"/>
+                    <t t-set="ol_class" t-value="'ks_vs_slide'"/>
+                    <t t-set="ol_div_class" t-value="'ks_vert_slider owl-carousel ks_thumb owl-theme'"/>
+                </t>
+            </div>
         </xpath>
     </template>
 
@@ -553,20 +511,20 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-lg ks_product_timer">
-                     <div class="product_timer">
-<!--                         <t t-if="seconds">-->
-                             <div class="ks_timer_box d-none">
-                                <div class="ks_product_timer_title">Offer Ends In !!</div>
-                                <input type="hidden" name="timer"
-                                   t-att-value="seconds"/>
-                                <!--<t t-if="seconds">-->
-                                <div class="clock"></div>
-                                <!--</t>-->
-                             </div>
-<!--                         </t>-->
-                    </div>
-                </div>
+<!--                <div class="col-12 col-lg ks_product_timer">-->
+<!--                     <div class="product_timer">-->
+<!--&lt;!&ndash;                         <t t-if="seconds">&ndash;&gt;-->
+<!--                             <div class="ks_timer_box d-none">-->
+<!--                                <div class="ks_product_timer_title">Offer Ends In !!</div>-->
+<!--                                <input type="hidden" name="timer"-->
+<!--                                   t-att-value="seconds"/>-->
+<!--                                &lt;!&ndash;<t t-if="seconds">&ndash;&gt;-->
+<!--                                <div class="clock"></div>-->
+<!--                                &lt;!&ndash;</t>&ndash;&gt;-->
+<!--                             </div>-->
+<!--&lt;!&ndash;                         </t>&ndash;&gt;-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
         </xpath>
     </template>
@@ -668,5 +626,89 @@
         <xpath expr="//p[@id='ks_alert_wrng']" position="before">
             <div class="availability_messages o_not_editable"/>
         </xpath>
+    </template>
+
+    <template id="website_sale.shop_product_carousel" name="Shop Product Carousel">
+        <t t-if="request.website.viewref('ks_theme_kinetik.ks_multiimage_layout').active">
+            <t t-call="ks_theme_kinetik.ks_product_image_slider">
+                <t t-set="div_01_class" t-value="'carousel-outer ks_vert_slide'"/>
+                <t t-set="ol_class" t-value="'ks_vs_slide'"/>
+                <t t-set="ol_div_class" t-value="'ks_vert_slider owl-carousel ks_thumb owl-theme'"/>
+            </t>
+        </t>
+        <t t-else="">
+            <t t-call="ks_theme_kinetik.ks_product_image_slider">
+                <t t-set="div_01_class" t-value="'carousel-outer'"/>
+                <t t-set="ol_class" t-value="'carousel-indicators'"/>
+                <t t-set="ol_div_class" t-value="'ks_multi_image_horizontal owl-carousel ks_thumb owl-theme'"/>
+            </t>
+        </t>
+    </template>
+
+    <template id="ks_product_image_slider" name="Product image slider">
+        <t t-set="variant_img" t-value="product_variant and product_variant.image_variant"/>
+        <t t-set="image_ids" t-value="product.product_image_ids"/>
+        <div id="o-carousel-product" class="ks_horizontal_product_slider carousel slide"
+             data-ride="carousel" data-interval="0">
+            <div t-attf-class="{{div_01_class}}">
+                <div class="owl-carousel ks_main owl-theme">
+                    <div data-oe-id="0" t-if="variant_img" class="ks_img_vrnt carousel-item active"
+                         itemprop="image"
+                         t-field="product_variant.image"
+                         t-options="{'widget': 'image', 'class': 'product_detail_img js_variant_img', 'alt-field': 'name', 'zoom': 'image', 'unique': str(product['__last_update']) + (str(product_variant['__last_update']) or '')}"/>
+                    <div t-att-data-oe-id="1 if variant_img else '0'" t-attf-class="carousel-item active"
+                         itemprop="image" t-field="product.image"
+                         t-options="{'widget': 'image', 'class': 'product_detail_img', 'alt-field': 'name', 'zoom': 'image', 'unique': product['__last_update']}"/>
+                    <t t-if="len(image_ids)" t-foreach="image_ids" t-as="pimg">
+                        <t t-set="attachment_id"
+                           t-value="request.env['ir.attachment'].search([('res_field', '=', 'product_video'), ('res_id', '=', pimg.id)]).id"/>
+                        <t t-if="attachment_id">
+                            <div t-att-data-oe-id="pimg_index + (variant_img and 2 or 1)"
+                                 class="carousel-item active">
+                                <iframe t-att-id="pimg.id" class="embed-responsive-item"
+                                        t-att-src="'/web/content/' + str(attachment_id)"
+                                        allowFullScreen="true" frameborder="0" autoplay="1"
+                                        allow="autoplay"/>
+                            </div>
+                        </t>
+                        <t t-else="">
+                            <div t-att-data-oe-id="pimg_index + (variant_img and 2 or 1)"
+                                 class="carousel-item active" t-field="pimg.image"
+                                 t-options='{"widget": "image", "class": "product_detail_img", "alt-field": "name", "zoom": "image" }'/>
+                        </t>
+                    </t>
+                </div>
+            </div>
+            <ol t-attf-class="{{ol_class}}" t-if="len(image_ids) or variant_img">
+                <div id="ks_multi_image_horiz" t-attf-class="{{ol_div_class}}">
+                    <div t-if="variant_img" data-target="#o-carousel-product" data-slide-to="0"
+                         class="ks_img_vrnt ks-vs-img ks_active_variant_image active">
+                        <img class="img img-fluid js_variant_img_small"
+                             t-attf-src="/web/image/product.product/{{product_variant.id}}/image/90x90"
+                             t-att-alt="product.name"/>
+                    </div>
+                    <div data-target="#o-carousel-product"
+                         t-att-data-slide-to="1 if variant_img else '0'"
+                         t-att-class="'ks-vs-img ks_active_variant_image' if variant_img else 'ks-vs-img ks_active_variant_image active'">
+                        <img class="img img-fluid"
+                             t-attf-src="/web/image/product.template/{{product.id}}/image/90x90"
+                             t-att-alt="product.name"/>
+                    </div>
+                    <t t-if="len(image_ids)" t-foreach="image_ids" t-as="pimg">
+                        <div data-target="#o-carousel-product"
+                             class="ks-vs-img ks_active_variant_image"
+                             t-att-data-slide-to="pimg_index + (variant_img and 2 or 1)">
+                            <t t-set="attachment_id"
+                               t-value="request.env['ir.attachment'].search([('res_field', '=', 'product_video'), ('res_id', '=', pimg.id)]).id"/>
+                            <img class="img img-fluid"
+                                 t-attf-src="/website/image/product.image/{{pimg.id}}/image/90x90"
+                                 t-att-alt="pimg.name"/>
+                            <i t-if="attachment_id"
+                               class="fa fa-2x fa-play-circle-o o_product_video_thumb"/>
+                        </div>
+                    </t>
+                </div>
+            </ol>
+        </div>
     </template>
 </odoo>

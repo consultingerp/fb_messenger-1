@@ -26,6 +26,7 @@
                         </span>
                     </div>
                     <div class="ks-bottom-item px-2">
+                        <i class="fa fa-comment"></i>
                         <span>
                             <t t-if="len(blog_post.message_ids) &lt;= 1">
                                 <t t-esc="len(blog_post.message_ids)"/>

@@ -6,7 +6,7 @@
 
                     <!--  Hero Section     -->
                     <section class="img-slider" >
-                        <div id="onlyImgSlider " class="carousel slide" data-ride="carousel">
+                        <div id="onlyImgSlider" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
                                     <img class="d-block w-100" src="/ks_theme_kinetik/static/src/landing-pages-images/gym/g-1.jpg" alt="First slide" />
@@ -981,7 +981,7 @@
                                         <div class="ks-banner-txt-sub2">Best Sellers</div>
                                         <div class="ks-banner-txt-main2 text-dark">Everybody Loves <br />These Chairs </div>
                                         <div class="ks-slider-btn-outer my-4">
-                                            <button class="btn ks-btn-theme">Shop Now</button>
+                                            <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                                         </div>
                                     </div>
                                 </div>
@@ -999,7 +999,7 @@
                                         <div class="ks-banner-txt-sub2">New Arrival</div>
                                         <div class="ks-banner-txt-main2 text-dark">Don't Miss <br />This Great Offer </div>
                                         <div class="ks-slider-btn-outer my-4">
-                                            <button class="btn ks-btn-theme">Shop Now</button>
+                                           <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                                         </div>
                                     </div>
                                 </div>
@@ -1017,7 +1017,7 @@
                                         <div class="ks-banner-txt-sub2">Top Trending</div>
                                         <div class="ks-banner-txt-main2 text-dark">Eye Catching <br />Style Superior </div>
                                         <div class="ks-slider-btn-outer my-4">
-                                            <button class="btn ks-btn-theme">Shop Now</button>
+                                           <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                                         </div>
                                     </div>
                                 </div>
@@ -1033,7 +1033,7 @@
                                     <div class="ks-collection-secondary-text">Must have for rooms</div>
                                 </section>
                                 <section>
-                                    <button class="btn ks-btn-theme ml-auto"> Shop Now </button>
+                                    <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                                 </section>
                             </section>
                             <section class="ks-collection-item justify-content-center flex-column p-3 mb-2  ml-sm-2 mr-2 mr-sm-0" style="background-image:url('/ks_theme_kinetik/static/src/landing-pages-images/furniture-img/Product-banner-2.jpg')">
@@ -1050,8 +1050,8 @@
                                     <h4 class="ks-collection-main-text">Stylish Sofa Sets</h4>
                                     <div class="ks-collection-secondary-text">Comfortable to Sit, Attractive to Look</div>
                                 </section>
-                                <section>
-                                    <button class="btn ks-btn-theme ml-auto"> Shop Now </button>
+                               <section>
+                                    <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                                 </section>
                             </section>
                             <section class="ks-collection-item justify-content-center flex-column p-3 mt-2  ml-sm-2 mr-2 mr-sm-0 mb-sm-0 mb-2" style="background-image:url('/ks_theme_kinetik/static/src/landing-pages-images/furniture-img/Product-banner-4.jpg')">
@@ -1060,7 +1060,7 @@
                                     <div class="ks-collection-secondary-text">Available at Unbelievable price</div>
                                 </section>
                                 <section>
-                                    <button class="btn ks-btn-theme"> Shop Now </button>
+                                    <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                                 </section>
                             </section>
                         </div>
@@ -1593,7 +1593,7 @@
                                             </h3>
                                         </div>
                                         <section class="d-flex align-items-center w-100">
-                                            <button class="btn ks-btn-theme">Conatct Now</button>
+                                            <button class="btn ks-btn-theme">Contact Now</button>
                                         </section>
                                     </div>
                                 </div>
@@ -1668,7 +1668,7 @@
                         </div>
                     </section>
 
-                    <!--   Conatct Us     -->
+                    <!--   Contact Us     -->
                     <section class="contactus-panel bg-white py-sm-5 container">
                         <div class="container-fluid">
                             <div class="row no-gutters border">
@@ -6223,7 +6223,7 @@
                             <div class="col-lg-4 mb-5 wow slideInUp" data-wow-duration="1s" data-wow-delay="0.5s">
                                 <div class="ks-footer-card p-4 text-center" >
                                     <img src="/ks_theme_kinetik/static/src/landing-pages-images/christmas/ecommerce.svg" class="ks-footer-card-img mb-4" alt="" />
-                                    <div class="h2">Conatct Number</div>
+                                    <div class="h2">Contact Number</div>
                                     <div>
                                         +91 123-456-7890
                                     </div>

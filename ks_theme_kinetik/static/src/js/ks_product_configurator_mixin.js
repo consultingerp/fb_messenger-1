@@ -48,3 +48,91 @@ odoo.define('ks_theme_kinetik.ProductConfiguratorMixin', function (require) {
 
     return ProductConfiguratorMixin;
 });
+
+odoo.define('ks_theme_kinetik.website_sale', function (require) {
+'use strict';
+
+    var website_sale = require('website_sale.website_sale');
+    var sAnimations = require('website.content.snippets.animation');
+
+    sAnimations.registry.WebsiteSale.include({
+        _updateProductImage: function () {
+            this._super.apply(this, arguments);
+            var product_length= $('.ks_multi_image_horizontal .ks_active_variant_image').length
+            var ks_loop=true;
+            if(product_length){
+                if (product_length < 5){
+                    ks_loop=false;
+                }
+            }
+                else{
+                product_length = $('.ks_vert_slider .ks_active_variant_image').length
+                if (product_length < 5){
+                    ks_loop=false;
+                }
+            }
+
+            $('.ks_main').on('click', '.owl-next, .owl-prev', function (ev) {
+                if($(ev.currentTarget).parents().eq(1).find('.ks_img_vrnt').length){
+                    if($(ev.currentTarget).parents().eq(1).find('.center').children().attr('Class').includes('ks_img_vrnt')){
+                        $($(ev.currentTarget).parents().find('.ks_thumb')).find('.owl-stage').trigger('to.owl.carousel', 0);
+                    }
+                    else{
+                        var id = $(ev.currentTarget).parents().eq(1).find('.center').children().attr('data-oe-id');
+                        $($(ev.currentTarget).parents().find('.ks_thumb')).find('.owl-stage').trigger('to.owl.carousel', id);
+                    }
+                }
+                else{
+                    var id = $(ev.currentTarget).parents().eq(1).find('.center').children().attr('data-oe-id');
+                    $($(ev.currentTarget).parents().find('.ks_thumb')).find('.owl-stage').trigger('to.owl.carousel', id);
+                }
+            });
+
+
+            $('.ks_thumb').on('click', '.owl-next, .owl-prev', function (ev2) {
+                $($($(ev2.currentTarget).parent().siblings()[0]).find('.owl-item.active').children()).removeClass('active').addClass('ks-vs-img ks_active_variant_image')
+                $($($(ev2.currentTarget).parent().siblings()[0]).find('.owl-item.active.center').children()).addClass('active')
+            });
+
+            $('.ks_main').owlCarousel({
+                loop:ks_loop,
+                nav:true,
+                dots:false,
+                items:1,
+                center:true,
+                video:true,
+                margin:5,
+                navText:['<i class="fa fa fa-angle-left"></i>','<i class="fa fa fa-angle-right"></i>'],
+            });
+
+            $('.ks_thumb').owlCarousel({
+                loop:ks_loop,
+                nav:true,
+                center:true,
+                dots:false,
+                items : 5,
+                margin: 5,
+                navText:['<i class="fa fa fa-angle-left"></i>','<i class="fa fa fa-angle-right"></i>'],
+                responsiveClass: true,
+                responsive:{
+                    0:{
+                        items: 3,
+                    },
+                    420: {
+                        items: 4,
+                    },
+                    767: {
+                        items: 3,
+                    },
+                    1200:{
+                        items: 5,
+                    }
+                },
+            });
+            $('.ks_thumb').on('mousewheel', '.owl-stage', function (e) {
+                $('.ks_thumb').trigger('next.owl');
+                e.preventDefault();
+            });
+        }
+    })
+})

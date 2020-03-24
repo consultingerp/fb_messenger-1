@@ -14,7 +14,17 @@ body{
         margin-bottom: 0;
 
     }
-
+    li{
+        ul li{
+            padding-right: 0px;
+            a{
+                align-items: start;
+                &:hover{
+                    background: #d2cfcf;
+                }
+            }
+        }
+    }
     @media (max-width: 540px) {
         margin-bottom: 10px 0;
 
@@ -1720,5 +1730,12 @@ body.o_connected_user{
 @media(max-width: 440px){
     .ks-header-6-search{
         max-width: calc(100% - 50px);
+    }
+}
+
+body.editor_enable.editor_has_snippets{
+    .o_affix_enabled, .o_affix_disabled  {
+        position: relative;
+        z-index: inherit !important;
     }
 }

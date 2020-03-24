@@ -73,7 +73,7 @@
                     &.active,
                     &:hover{
                         transition: 0.2s ease-in-out;
-                        background: darken($primary, 10%);
+//                         background: darken($primary, 10%);
                     }
                 }
                 @media (min-width: 769px) {

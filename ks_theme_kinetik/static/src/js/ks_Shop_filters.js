@@ -15,57 +15,23 @@ odoo.define('ks_ecommerce_theme.ks_footer', function (require) {
 
 //.......................................for shop page product slider..................................................
 
-        var html, oldHtml=1, flag = true, initializer = true, copyOfOldHtml, initializer = true, entered;
-        if(flag){
-        $(document).on("mouseenter",".ks-product-list-mode",function (e){
+        $('.ks_main_for_hover_slider').owlCarousel({
+            dots : true,
+            loop:true,
+            items:1,
+            slideTransition: 'linear',
+            autoplayTimeout: 0,
+            margin:8,
+        });
 
-                var product_id=$(e.currentTarget).parents('.oe_product_cart').find('.ks_product_template_id').val()
-                ajax.jsonRpc("/shop/product/slider", 'call', {'product_id':product_id}
-                            ).then(function (data){
+        $(document).on("mouseover",".ks_main_for_hover_slider",function (e){
+            $(e.currentTarget).trigger('play.owl.autoplay',[1500]);
+        })
 
-
-                          html = data;
-                          if(html && flag){
-                          entered = true;
-                          flag = false;
-                          if(initializer){
-                          if($(e.currentTarget).find('.oe_product_image')[0]){
-                          oldHtml = $(e.currentTarget).find('.oe_product_image')[0];
-                          if(oldHtml != undefined){
-                             copyOfOldHtml = oldHtml;
-                          }
-                          $(e.currentTarget).find('.oe_product_image').replaceWith(html);
-                          initializer = false;
-                          }
-                          }
-                          if(!initializer){
-                                var owl = $(".ks_main_for_hover_slider");
-                                owl.owlCarousel({
-                                 dots : true,
-                                 autoplay: true,
-                                 autoplayHoverPause:false,
-                                 autoplayTimeout:1100,
-                                 loop:true,
-                                 margin: 8,
-                                 items:1,
-                                });
-
-                               }
-                              }
-                        });
-                     });
-                }
-
-
-            $(document).on("mouseleave",".ks-product-list-mode",function (e){
-                                 if(entered){
-                                 $('.ks_shop_product_slider').replaceWith(copyOfOldHtml);
-                                 flag = true;
-                                 initializer = true;
-                                 entered =false;
-                                 }
-                                 });
-
+        $(document).on("mouseleave",".ks_main_for_hover_slider",function (e){
+            $(e.currentTarget).trigger('stop.owl.autoplay');
+            $(e.currentTarget).trigger('to.owl.carousel', 0);
+        })
 //........................................end of shop page product slider.................................................................
 
     $('.o_product_info').on("click",function(e){

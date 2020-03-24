@@ -5,7 +5,7 @@
 
     .ks-product-name {
         color: $black;
-        font-size: 18px;
+        font-size: 20px;
         font-weight: 500;
     }
 
@@ -237,7 +237,7 @@
     /*&[data-attribute_name="Color"],
     &[data-attribute_name="Colors"] {
         .list-inline-item {
-            width: 30px; 
+            width: 30px;
         }
 
         label.css_attribute_color {
@@ -537,7 +537,7 @@
 .ks-product-description {
     animation: collection 1s ease-in-out;
     margin-top: 10px;
-    
+
     @media (max-width: 1400px) and (min-width: 575px) {
        // margin: 0 20px;
     }
@@ -800,7 +800,7 @@
 
 .product_short_description{
     margin-bottom: 1rem;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
 }
 
 .ks_suggested_products{
@@ -920,23 +920,76 @@
 
 .product_timer{
     .ks_timer_box{
-        margin-bottom: 15px;
-        box-shadow: 1px 4px 8px #a2a1a1;
-        padding-left: 10px;
+         margin-top: -20px;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 100%;
+        padding: 0px;
+
+        background: $primary;
+        color: #fff;
+        border-radius: 4px;
+
+        @media(max-width: 575px){
+             margin-top: 1rem;
+        }
+    }
+    .ks_product_timer_title {
+        font-weight: 600;
+        font-size: 18px;
+        padding-left: 20px;
+    }
+    .flip-clock-wrapper{
+        background: #fff;
+        border: 2px solid $primary;
         max-width: 310px;
+        margin-bottom: 0px !important;
+        margin-left: auto !important;
+        padding-right: 0px;
+        margin-right: auto;
+        border-radius: 0 4px 4px 0;
+        height: 35px !important;
+
+        @media(min-width: 992px){
+            margin-top: 0px !important;
+            margin-right: 0px;
+        }
+    }
+    .flip-clock-wrapper ul li a div div.inn,
+    .flip-clock-wrapper ul{
+        background: $primary;
+         border-radius: 2px;
+    }
+    .flip-clock-wrapper ul li a div div.inn{
+        color: #fff;
+        text-shadow: none;
     }
 
-    .ks_product_timer_title {
-        background: #f9f9f9;
-        border-bottom: 1px solid #e4e0e0;
-        margin-left: -10px;
-        padding: 3px 5px;
-        text-align: center;
-        font-weight: 600;
+    .flip-clock-divider .flip-clock-label{
+        //color: white;
+//         color: $primary;
+//         font-size: 12px;
+//         right: -43px!important;
+            color: #ffffff;
+        font-size: 12px;
+        right: -48px !important;
+        background: $primary;
+        padding: 2px 7px;
+        margin-top: -2px;
+        border-radius: 6px 6px 0 0;
+    }
+    .flip-clock-dot{
+         left: 7px;
+    }
+    .flip-clock-divider.minutes .flip-clock-label{
+          right: -55px!important;
+    }
+    .flip-clock-divider.seconds .flip-clock-label{
+          right: -57px!important;
     }
 
     @media(min-width: 1280px){
-//         margin-top: -45px;
         .flip-clock-wrapper{
             margin-bottom: 0px !important;
         }

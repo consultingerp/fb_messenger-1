@@ -42,9 +42,8 @@
                             <form action="/shop" method="get" class="text-center">
                                 <input name="id" value="offer_timer"
                                        type="hidden"/>
-                                <a class="btn ks-btn-theme">
-                                    <span>+ Shop Now +</span>
-                                </a>
+                                 <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> <span>+ Shop Now +</span>
+                                 </a>
                             </form>
                         </section>
                     </div>

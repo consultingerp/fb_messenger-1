@@ -101,39 +101,44 @@ class WebsiteSale(WebsiteSale):
         This is used to remove procuct from wishlist for every user and each website"""
         request.env['product.wishlist'].sudo().search([('id', '=', wish.id)]).unlink()
         return True
-
+# *******************************************
     @http.route(['/shop/cart/update'], type='http', auth="public", methods=['POST'], website=True, csrf=False)
     def cart_update(self, product_id, add_qty=1, set_qty=0, **kw):
         """This is used to handle event of add to cart button redirect from detail page but only add fron shop page"""
         super(WebsiteSale, self).cart_update(product_id, add_qty, set_qty, **kw)
-        if 'product_template_id' in kw or 'timer' in kw:
-            return request.redirect("/shop/cart")
+
+
+        if 'product_template_id' in kw and 'my_cart' in kw:
+            return request.redirect("/shop")
+
         else:
-            return request.redirect('/shop')
+            return request.redirect('/shop/cart')
+
+# *********************************************
     # This is used for update the count of product
     # @http.route(["/cart/count/update"], type='json', auth="public", methods=['POST'], website=True, csrf=False)
     # def cart_update_grid(self,product_id, add_qty=1, set_qty=0, **kw):
     #     quantity= request.website.sale_get_order().cart_quantity
     #     return quantity
-
+# ***************************
     @http.route(["/details/cart/update"], type='json', auth="public", methods=['POST'], website=True, csrf=False)
     def cart_update_grid_modal(self,**kw):
         optional_product_len = len(
             request.env['product.template'].sudo().search([('id', '=', int(kw['template_id']))]).optional_product_ids)
         return optional_product_len
+
+    # **********************
+
     @http.route(['/product_configurator/get_combination_info_website'], type='json', auth="public", methods=['POST'],
                 website=True)
     def get_combination_info_website(self, product_template_id, product_id, combination, add_qty, **kw):
         """We have override that controller to remove default template for images in product detail page"""
-        kw['context'] = kw.get('context', {})
-        kw['context'].update(website_sale_stock_get_quantity=True)
-        kw.pop('pricelist_id')
+
         seconds = 0
         query = "select categ_id FROM product_template where id = %s"
         request.env.cr.execute(query, (product_template_id,))
         categ_id = request.env.cr.fetchall()
-        res = self.get_combination_info(product_template_id, product_id, combination, add_qty,
-                                        request.website.get_current_pricelist(), **kw)
+        res = super(WebsiteSale, self).get_combination_info_website(product_template_id, product_id, combination,add_qty, **kw)
         ks_pricelist_item = request.env['product.pricelist.item'].sudo().search(
             ['&', '|', '|',
              ('product_tmpl_id', '=', res.get("product_template_id", False)),
@@ -151,7 +156,7 @@ class WebsiteSale(WebsiteSale):
             "seconds": seconds,
         })
         return res
-
+# *********************************************
     @http.route(['/ks_shop/cart/update'], type='http', auth="public", methods=['POST'], website=True, csrf=False)
     def ks_cart_update(self, product_id, add_qty=1, set_qty=0, **kw):
         """This route is called when adding a product to cart (no options)."""
@@ -248,19 +253,3 @@ class WebsiteSale(WebsiteSale):
                 'UPDATE product_template_res_users SET recently_viewed_date=%s WHERE product_template_id=%s and res_user_id=%s',
                 (fields.Datetime.now(), product.id, request.env.user.id))
         return request.render("website_sale.product", values.qcontext)
-
-    @http.route(["/shop/product/slider"], type='json', auth="public", methods=['POST'], website=True, csrf=True)
-    def product_image_slider(self, **kw):
-        ks_shop_product_enable=request.website.viewref('ks_theme_kinetik.shop_img_slider').active
-        ks_shop_product_enable=request.website.viewref('ks_theme_kinetik.shop_img_slider').active
-        if(ks_shop_product_enable):
-            product_id=kw['product_id']
-            product=request.env['product.template'].browse(int(kw['product_id']))
-            product_extra_images=request.env['product.template'].browse(int(kw['product_id'])).product_image_ids
-            values = {
-                'product': product,
-            }
-            if(len(product_extra_images)):
-                return request.env['ir.ui.view'].render_template("ks_theme_kinetik.ks_slider_on_hover", values)
-            else:
-                return False

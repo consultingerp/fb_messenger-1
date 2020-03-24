@@ -71,6 +71,49 @@
             direction: rtl;
         }
     }
+
+    .ks-product-collection {
+        .ks-collection-item {
+            &:nth-child(1),
+            &:nth-child(3) {
+                text-align: left !important;
+            }
+            &:nth-child(2),
+            &:nth-child(4) {
+                text-align: right !important;
+            }
+        }
+    }
+
+    .ks-deal-sales.ks-furniture-deal {
+        .col-lg-6.ml-auto.d-flex.justify-content-center.align-items-center.flex-wrap {
+            margin-right: auto;
+            margin-left: initial !important;
+        }
+    }
+    .o_product_feature_panel {
+        z-index: 100;
+        .comparator-popover {
+            left: auto !important;
+            right: 0px !important;
+        }
+    }
+
+    .ks_main {
+        .owl-stage-outer {
+            direction: rtl;
+        }
+    }
+    .ks_thumb{
+        .owl-stage-outer {
+            direction: rtl;
+        }
+    }
+    .ks_main_for_hover_slider{
+        .owl-stage-outer {
+            direction: rtl;
+        }
+    }
 }
 
 .o_rtl ~  .popover.mycart-popover{
@@ -96,6 +139,11 @@
     width: 100%;
 }
 
+html,
+body {
+    direction: ltr;
+    overflow: auto;
+}
 
 
 

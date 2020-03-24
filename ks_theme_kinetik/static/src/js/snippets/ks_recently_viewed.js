@@ -36,12 +36,12 @@ odoo.define('website_recently_viewed_snippet', function(require){
                   responsive:{
                         0:{
                             items: 2,
-                            dots: true,
+                            dots: false,
                             margin:0,
                         },
                         960:{
                             items: 3,
-                            dots: true
+                            dots: false
                         },
                         1200:{
                             items: 4,

@@ -5,12 +5,20 @@
 from __future__ import division
 import json
 from werkzeug.exceptions import Forbidden
+
 from odoo import http
 from odoo.http import request
 from odoo.addons.website_sale.controllers.main import WebsiteSale
 
 
 class WebsiteSaleInh(WebsiteSale):
+
+    def _get_mandatory_billing_fields(self):
+        return ["name", "country_id"]
+
+    def _get_mandatory_shipping_fields(self):
+        return ["name", "country_id"]
+
 
     @http.route(['/shop/rerender_confirmation'], type='http', auth="public",
                 website=True)
@@ -32,7 +40,6 @@ class WebsiteSaleInh(WebsiteSale):
     def check_address(self, **kw):
         """Called when the form is complete and valid.
         """
-        import pdb;pdb.set_trace()
         partner_obj = request.env['res.partner'].with_context(
             show_address=1).sudo()
         order = request.website.sale_get_order()
@@ -106,6 +113,7 @@ class WebsiteSaleInh(WebsiteSale):
         carriers = self._get_shop_payment_values(order)
         carriers['partner_id'] = partner_id
         req_rend = request.render("checkout.carriers", carriers)
+        # req_rend.qcontext['incomplete_data'] = True
         return req_rend
 
     @http.route(['/shop/payment'], type='http', auth="public", website=True)
@@ -115,7 +123,10 @@ class WebsiteSaleInh(WebsiteSale):
         """
         order = request.website.sale_get_order()
         c_id = int(post.get('carrier_id', 0))
-        order._check_carrier_quotation(force_carrier_id=c_id)
+        # EDIT By Ram Mere , this fix bug 500 internal server error 
+        #when clear the cart ( or click on x button )
+        if(len(order) > 0):
+            order._check_carrier_quotation(force_carrier_id=c_id)
         res = super(WebsiteSaleInh, self).payment(**post)
         for field in self._get_mandatory_billing_fields():
             if not order.partner_id[field]:
@@ -159,6 +170,21 @@ class WebsiteSaleInh(WebsiteSale):
         carriers = self._get_shop_payment_values(order)
         carriers['partner_id'] = partner_id
         req_rend = request.render("checkout.carriers", carriers)
+        return req_rend
+
+
+
+    @http.route(['/shop/render_payment_methods'], type='http', auth='public',
+                website=True)
+    def render_payment_methods(self, **post):
+        """Used to render carriers according to the partner set to the order
+        as "shipping address"
+        """
+        partner_id = post.get('partner_id')
+        order = request.website.sale_get_order()
+        carriers = self._get_shop_payment_values(order)
+        carriers['partner_id'] = partner_id
+        req_rend = request.render("checkout.payment_method", carriers)
         return req_rend
 
     @http.route(['/shop/editme'], type='http', auth="public", website=True)

@@ -1,13 +1,12 @@
 <odoo>
     <data>
     <template id="grefoot.contactus_form_website" name="Contact Form" inherit_id="website_crm.contactus_form" customize_show="True">
-            <xpath expr="//div/input[@name='partner_name']//ancestor::div[2]" position="replace">
-                   <!-- REMOVE -->
-            </xpath>
+            <!-- <xpath expr="//div/input[@name='partner_name']//ancestor::div[2]" position="replace">
+            </xpath> -->
 
-            <xpath expr="//div/input[@name='email_from']" position="replace">
+            <!-- <xpath expr="//div/input[@name='email_from']" position="replace">
             <input type="text" class="form-control o_website_form_input custom-input" placeholder="Email" name="email_from"  t-att-value="request.params.get('email_from', '')" />
-			</xpath>
+			</xpath> -->
 		</template>
     </data>
 </odoo>
