@@ -185,11 +185,6 @@
 del.text-danger {
     font-size: 75%;
 }
-.o_website_rating_static{
-   text-align: center;
-   padding: 0px 0;
-   color: #f66823 !important;
-}
 
 // Client feedback issues resolved (12-11-2019)
 
@@ -237,9 +232,7 @@ del.text-danger {
 .o_rating_star_card .stars {
     color: #FFC315;
 }
-.o_website_rating_static{
-        color: #f66823
-}
+
 div.product-card{
     box-shadow: none;
     .fp__price{
@@ -258,7 +251,6 @@ div.product-card{
     }
 
     .ks_products_table .oe_product.oe_grid .ks_name_price .ks-price{
-        font-size: 16px;
         display: block;
     }
 

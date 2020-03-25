@@ -40,7 +40,9 @@
                                     </div>
                                     <div class="ks-blogs-middle">
                                         <a t-attf-href="#{blog_url('', ['blog', 'post'], blog=post.blog_id, post=post)}">
-                                            <img t-att-src="json.loads(post.cover_properties)['background-image'].split('(')[1].split(')')[0]" alt="user image" class="image-fluid"/>
+                                            <t t-if="json.loads(post.cover_properties).get('background-image')!='none'">
+                                                <img t-att-src="json.loads(post.cover_properties)['background-image'].split('(')[1].split(')')[0]" alt="user image" class="image-fluid"/>
+                                            </t>
                                         </a>
                                     </div>
                                     <div class="ks-blogs-bottom">
@@ -55,9 +57,12 @@
                                                 <span t-if="editable or post.tag_ids" class="fa fa-tags" role="img"
                                                       aria-label="Tags" title="Tags"/>
                                                 <t t-foreach="post.tag_ids" t-as="one_tag">
-                                                    <a class="badge badge-primary mr8"
-                                                       t-attf-href="#{blog_url('', ['blog', 'post'], blog=post.blog_id, tag=one_tag.id)}"
-                                                       t-esc="one_tag.name"/>
+<!--                                                    <a class="badge badge-primary mr8"-->
+<!--                                                       t-attf-href="#{blog_url('', ['blog', 'post'], blog=post.blog_id, tag=one_tag.id)}"-->
+<!--                                                       t-esc="one_tag.name"/>-->
+                                                      <a class="badge badge-primary mr8"
+                                                               t-attf-href="#{blog_url('', ['blog', 'post'], blog=post.blog_id, tag=one_tag)}"
+                                                               t-esc="one_tag.name"/>
                                                 </t>
                                                 <span t-if="editable and not post.tag_ids" class="badge badge-danger">
                                                     No tags defined!

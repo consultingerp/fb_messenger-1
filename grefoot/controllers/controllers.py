@@ -46,7 +46,6 @@ class Grefoot(http.Controller):
 
     @http.route('/shop/update_state', type='json', auth="public", website=True)
     def update_state(self, **kw):
-        import pdb;pdb.set_trace()
         # results=http.request.env['product.product'].sudo().search_read([],fields=['name','website_url','product_tmpl_id'])
 
         headers = {'Content-Type': 'application/json'}

@@ -101,7 +101,7 @@ class Ks_WebsiteProductGrid(http.Controller):
                     if ks_blog_url != "none":
                         # ks_blog_url = ks_blog_url.split("(")[1]
                         ks_blog_url_inner = ks_blog_url.split("(")[1]
-                        ks_blog_url_sanitized = ks_blog_url_inner.split(")")[0]+'/330x330'
+                        ks_blog_url_sanitized = ks_blog_url_inner.split(")")[0]
                 values = {
                     'ks_blog_url': ks_blog_url_sanitized,
                     'ks_create_date': display_date,

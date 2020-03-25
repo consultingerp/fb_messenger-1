@@ -106,7 +106,7 @@
     'price': '170.0',
     'category': 'Theme/Ecommerce',
     'support': 'sales@ksolves.com',
-    'version': '1.8.0',
+    'version': '1.8.3',
     'live_test_url': 'https://demokinetik.kappso.com',
     'depends': ['ks_theme_base', 'website_sale_wishlist', 'website_sale_comparison',
                 'website_sale_stock', 'website_rating','website_crm'],

@@ -615,14 +615,4 @@
     }
 }
 
-.ks_timer_box {
-    @media (min-width: 769px) {
-        margin-left: auto;
-    }
-    .flip-clock-divider {
-        @media (max-width: 575px) {
-            width: 11px;
-            left: -2px;
-        }
-    }
-}
+

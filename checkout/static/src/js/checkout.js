@@ -6,6 +6,8 @@ odoo.define('checkout.checkout', function(require){
         base = require('web_editor.base'),
         core = require('web.core'),
         ajax = require('web.ajax'),
+        // framework = require('web.framework'),
+        PaymentForm=require('payment.payment_form'),
         wp = $('#website_partner').data('website-partner'),
         op = $('#order_partner').data('order-partner'),
         state = (op == wp) ? true : false,
@@ -20,6 +22,9 @@ odoo.define('checkout.checkout', function(require){
         _t = core._t;
         require('web.dom_ready');
 
+      
+
+    
     // Pay button disabled by default, enabled when state of the forms is valid.
     $conf_buttons.prop('disabled', state);
     $ship_button.prop('disabled', state);
@@ -43,6 +48,10 @@ odoo.define('checkout.checkout', function(require){
     });
     $.validator.addMethod("customemail",
         function(value, element) {
+            // so empty is valid too
+            if(value=="" || value ==null || value==undefined)
+            return true
+            else 
             return /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(value);
         },
         _t("Type a valid email address")
@@ -52,7 +61,7 @@ odoo.define('checkout.checkout', function(require){
     bind_events();
     var $form = $("#BillingAddressForm"),
         $inputs = $form.find('input[required]'),
-        $all_inputs = $form.find('input');
+        $all_inputs = $form.find('input,select');
     var validatorObj = $form.validate({
         submitHandler: function() { alert("Submitted!"); },
         rules: {
@@ -70,12 +79,12 @@ odoo.define('checkout.checkout', function(require){
                 digits: true
             },
             email: {
-                required:  {
-                        depends:function(){
-                            $(this).val($.trim($(this).val()));
-                            return true;
-                        }
-                    },
+                // required:  {
+                //         depends:function(){
+                //             $(this).val($.trim($(this).val()));
+                //             return true;
+                //         }
+                //     },
                 customemail: true
             }
         }
@@ -89,13 +98,13 @@ odoo.define('checkout.checkout', function(require){
                     "name": $form.find('input[name="name"]').val(),
                     "email": $form.find('input[name="email"]').val(),
                     "phone": $form.find('input[name="phone"]').val(),
-                    "company_name": $form.find('input[name="company_name"]').val(),
-                    "vat": $form.find('input[name="vat"]').val(),
-                    "zip": $form.find('input[name="zip"]').val(),
-                    "street": $form.find('input[name="street"]').val(),
+                    // "company_name": $form.find('input[name="company_name"]').val(),
+                    // "vat": $form.find('input[name="vat"]').val(),
+                    // "zip": $form.find('input[name="zip"]').val(),
+                    // "street": $form.find('input[name="street"]').val(),
                     "state_id": $form.find('select[name="state_id"]').val(),
                     "country_id": $form.find('select[name="country_id"]').val(),
-                    "city": $form.find('input[name="city"]').val(),
+                    // "city": $form.find('input[name="city"]').val(),
                     "csrf_token": $form.find('input[name="csrf_token"]').val(),
                     "submitted": $form.find('input[name="submitted"]').val(),
                     "partner_id": $form.find('input[name="partner_id"]').val(),
@@ -114,35 +123,53 @@ odoo.define('checkout.checkout', function(require){
                         var data_obj = $.parseJSON(data);
                         $form.find('input[name="partner_id"]').val(data_obj.partner_id);
                         $conf_buttons.prop('disabled', false);
+
+                        update_payment_method(parseInt(data_obj.partner_id), $form.find('input[name="csrf_token"]').val());
                         $ship_button.prop('disabled', false);
                         $("#delivery_carrier ul").show();
+                        // $("#delivery_carrier ul input[type=radio]:first").each(function(){
+                        //     $(this).attr('checked', true);
+                        //     ajax.jsonRpc('/shop/update_carrier', 'call', {
+                        //         'carrier_id': Number($(this).val())
+                        //     }).then(_onCarrierUpdateAnswer);
+                        // });
                         $(".fa-spinner").parent().remove();
                     } catch (e) {
                         $conf_buttons.prop('disabled', false);
                         $ship_button.prop('disabled', false);
                         $("#delivery_carrier").replaceWith(data);
                         var cp_id = $("#delivery_carrier").find('#carrier_partner').data('carrier-partner');
+                        var csrf_token=$form.find('input[name="csrf_token"]').val()
+                        update_payment_method(parseInt(cp_id),csrf_token);
                         $form.find('input[name="partner_id"]').val(cp_id);
+                        // $("#delivery_carrier ul input[type=radio]:first").each(function(){
+                        //     $(this).attr('checked', true);
+                        //     ajax.jsonRpc('/shop/update_carrier', 'call', {
+                        //         'carrier_id': Number($(this).val())
+                        //     }).then(_onCarrierUpdateAnswer);
+                        // });
                     }
                     bind_events();
                 });
+            }
+            else {
+                    $conf_buttons.prop('disabled', true);
             }
         });
     });
     // when all required fields are filled save the contact
     $.each($all_shipping_inputs, function(index, value) {
         $(value).on('change', function () {
-            debugger;
             var $inputs_filled = $shipping_form.find('input[required]:filled');
             if ($shipping_inputs.length == $inputs_filled.length && !validatorObj.numberOfInvalids()) {
                 var form_fields = {
                     "name": $shipping_form.find('input[name="name"]').val(),
                     "phone": $shipping_form.find('input[name="phone"]').val(),
-                    "zip": $shipping_form.find('input[name="zip"]').val(),
+                    // "zip": $shipping_form.find('input[name="zip"]').val(),
                     "street": $shipping_form.find('input[name="street"]').val(),
                     "state_id": $shipping_form.find('select[name="state_id"]').val(),
                     "country_id": $shipping_form.find('select[name="country_id"]').val(),
-                    "city": $shipping_form.find('input[name="city"]').val(),
+                    // "city": $shipping_form.find('input[name="city"]').val(),
                     "csrf_token": $shipping_form.find('input[name="csrf_token"]').val(),
                     "submitted": $shipping_form.find('input[name="submitted"]').val(),
                     "partner_id": $shipping_form.find('input[name="partner_id"]').val(),
@@ -163,12 +190,24 @@ odoo.define('checkout.checkout', function(require){
                         $billing_form.find('input[name="partner_id"]').val(data_obj.partner_id);
                         $conf_buttons.prop('disabled', false);
                         $("#delivery_carrier ul").show();
+                        // $("#delivery_carrier ul input[type=radio]:first").each(function(){
+                        //     $(this).attr('checked', true);
+                        //     ajax.jsonRpc('/shop/update_carrier', 'call', {
+                        //         'carrier_id': Number($(this).val())
+                        //     }).then(_onCarrierUpdateAnswer);
+                        // });
                         $(".fa-spinner").parent().remove();
                     } catch (e) {
                         $conf_buttons.prop('disabled', false);
                         $("#delivery_carrier").replaceWith(data);
                         var cp_id = $("#delivery_carrier").find('#carrier_partner').data('carrier-partner');
                         $billing_form.find('input[name="partner_id"]').val(cp_id);
+                        // $("#delivery_carrier ul input[type=radio]:first").each(function(){
+                        //     $(this).attr('checked', true);
+                        //     ajax.jsonRpc('/shop/update_carrier', 'call', {
+                        //         'carrier_id': Number($(this).val())
+                        //     }).then(_onCarrierUpdateAnswer);
+                        // });
                         bind_events();
                     }
                 });
@@ -264,6 +303,7 @@ odoo.define('checkout.checkout', function(require){
             $.post('/shop/check_address', $temp_form.serialize()+'&xhr=1', function (data) {
                 render_kanban(csrf_token, partner_id);
                 render_billing_card(csrf_token);
+                
             });
         }
     });
@@ -290,7 +330,6 @@ odoo.define('checkout.checkout', function(require){
         render_kanban(csrf_token)
     });
 
-    //bind the contact addition
     $('.address-column').on('click', '.add-address', function(ev) {
         ev.preventDefault();
         var self = this;
@@ -358,6 +397,10 @@ odoo.define('checkout.checkout', function(require){
                                 selectStates.append(opt);
                             });
                             selectStates.parent('div').show();
+                            // EDIT By Ram Mere 
+                            // Update the states 
+                            selectStates.trigger('change');
+
                         }
                         else {
                             selectStates.val('').parent('div').hide();
@@ -406,8 +449,65 @@ odoo.define('checkout.checkout', function(require){
             bind_events();
         });
     }
+
+    // EDIT By Ram Mere ability to update payment method when update address
+    function update_payment_method(partner_id, csrf_token) {
+        $.ajax({
+            type: 'POST',
+            url: '/shop/render_payment_methods',
+            data: {
+                partner_id: partner_id,
+                csrf_token: csrf_token,
+            },
+            beforeSend: function ( xhr ) {
+            if($('#payment_method form').length>0)
+            {
+            $("#payment_method form").remove();
+            }
+            $('<div class="text-center" id="loading_spinner_payment_method" ><span class="fa fa-spinner fa-3x fa-spin"/></div>').insertAfter("#payment_method h4");
+            }
+        }).done(function(data) {
+            if($('#payment_method form').length>0)
+            {
+
+            $("#loading_spinner_payment_method").remove()
+            // since it is already exist
+            var domDataWithoutPayButton=$(data).find('#payment_method')
+            domDataWithoutPayButton.find('#o_payment_form_pay').css('display','none')
+            $("#payment_method form").replaceWith(domDataWithoutPayButton.html());
+            // $(this).disableButton()
+            }
+            else {
+            $("#loading_spinner_payment_method").remove()
+            var domDataWithoutPayButton=$(data).find('#payment_method')
+            domDataWithoutPayButton.find('#o_payment_form_pay').css('display','none')
+            $(domDataWithoutPayButton.html()).insertAfter($("#payment_method h4"));
+
+            }
+
+
+            $(function () {
+                // TODO move this to another module, requiring dom_ready and rejecting
+                // the returned deferred to get the proper message
+                if (!$('.o_payment_form').length) {
+                    console.log("DOM doesn't contain '.o_payment_form'");
+                    return;
+                }
+                // EDIT BY Ram Mere this attach payment form event 
+                $('.o_payment_form').each(function () {
+                    var $elem = $(this);
+                    var form = new PaymentForm(null, $elem.data());
+                    form.attachTo($elem);
+                });
+                // END Of Edit
+            });
+            bind_events();
+        });
+    }
+
     // Used to render the kanban cards of the contact addresses
     // if the partner_id is passed the shippings will be recomputed
+
     function render_kanban(csrf_token, partner_id) {
         var partner_id = partner_id || false;
         $.ajax({
@@ -466,10 +566,10 @@ odoo.define('checkout.checkout', function(require){
             $compute_badge.addClass('d-none');
             if($pay_button.data('disabled_reasons'))
             {
-
             $pay_button.data('disabled_reasons').carrier_selection = false;
-            $pay_button.prop('disabled', _.contains($pay_button.data('disabled_reasons'), true));
             }
+            $pay_button.prop('disabled', _.contains($pay_button.data('disabled_reasons'), true));
+            rerender_confirmation()
         }
         else {
             console.error(result.error_message);
@@ -490,6 +590,13 @@ odoo.define('checkout.checkout', function(require){
                 }).then(_onCarrierUpdateAnswer);
             });
         })
+        // TODO this will be called twice , it should only be called once 
+        $("#delivery_carrier ul input[type=radio]:first").each(function(){
+            $(this).attr('checked', true);
+            ajax.jsonRpc('/shop/update_carrier', 'call', {
+                'carrier_id': Number($(this).val())
+            }).then(_onCarrierUpdateAnswer);
+        });
         // writes the notes on the order
         $carrier.find(".js_instructions").on('change', function(ev){
             var instructions = $(this).val();
@@ -497,6 +604,8 @@ odoo.define('checkout.checkout', function(require){
                 'instructions': instructions
             });
         });
+
+
     }
     // async method used to update UI with consistent data on the confirmation
     // column.
@@ -516,7 +625,7 @@ odoo.define('checkout.checkout', function(require){
                 $("#confirm_order .order-total-qty").replaceWith('<div class="text-center"><span class="fa fa-spinner fa-2x fa-spin"/></div>');
             }
         }).done(function(data) {
-            $confirm_order.replaceWith(data);
+            $confirm_order.parent().replaceWith(data);
             delete_product_binder();
             change_qty_binder();
         });

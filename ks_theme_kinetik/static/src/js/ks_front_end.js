@@ -345,8 +345,8 @@ $(document).ready(function(){
 
         _.each($('.fp__name'),function(e){
                     var text=$(e).text().trim();
-                    if($(e).text().trim().length>30){
-                        $(e).text($(e).text().trim().slice(0,27)+'..');
+                    if($(e).text().trim().length>50){
+                        $(e).text($(e).text().trim().slice(0,47)+'..');
 
                     }
         })

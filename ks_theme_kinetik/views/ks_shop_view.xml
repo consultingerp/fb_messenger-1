@@ -312,7 +312,7 @@
                                         </li>
                                         <t t-if="category">
                                             <li class="breadcrumb-item">
-                                                <a t-att-href="url">/
+                                                <a t-att-href="url">
                                                     <t t-esc="category.name"/>
                                                 </a>
                                             </li>
@@ -499,14 +499,39 @@
                 <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                 <input type="hidden" class="ks_product_template_id" name="product_template_id"
                        t-att-value="product.id"/>
+
+                <input type="hidden" name="my_cart"/>
                 <div itemscope="itemscope" itemtype="http://schema.org/Product">
                     <div class="ribbon-wrapper">
-                        <a href="#" role="button" class="ribbon btn btn-danger">Sale</a>
+                        <a href="javascript:void(0)" role="button" class="ribbon btn btn-danger">Sale</a>
                     </div>
-                    <div class="ks-product-list-mode">
+                    <t t-set="image_ids" t-value="product.product_image_ids"/>
+                    <div t-attf-class="ks-product-list-mode {{'ks_shop_slider' if len(image_ids) and request.website.viewref('ks_theme_kinetik.shop_img_slider').active else ''}}">
                         <div class="oe_product_image">
                             <a itemprop="url" t-att-href="product_href">
-                                <img t-attf-src="/web/image/product.template/#{product.id}/image/330x330"/>
+                                <t t-if="request.website.viewref('ks_theme_kinetik.shop_img_slider').active">
+                                    <div class="ks_shop_product_slider">
+                                        <t t-if="len(image_ids)">
+                                            <div class="owl-carousel ks_main_for_hover_slider">
+                                                <div data-oe-id="0" t-attf-class="carousel-item#{'' ' active'}"
+                                                     itemprop="image" t-field="product.image"
+                                                     t-options="{'widget': 'image', 'class': 'ks_shop_product product_detail_img', 'alt-field': 'name', 'zoom': 'image', 'unique': product['__last_update']}"/>
+                                                <t t-if="len(image_ids)" t-foreach="image_ids" t-as="pimg">
+                                                    <div class="carousel-item active" t-field="pimg.image"
+                                                         t-options='{"widget": "image", "class": "ks_shop_product product_detail_img", "alt-field": "name", "zoom": "image" }'/>
+                                                </t>
+                                            </div>
+                                        </t>
+                                        <t t-else="">
+                                            <img class="ks_shop_product"
+                                                 t-attf-src="/web/image/product.template/#{product.id}/image/330x330"/>
+                                        </t>
+                                    </div>
+                                </t>
+                                <t t-else="">
+                                    <img class="ks_shop_product"
+                                         t-attf-src="/web/image/product.template/#{product.id}/image/330x330"/>
+                                </t>
                             </a>
                         </div>
                         <t t-if="show_publish">
@@ -667,7 +692,7 @@
         <xpath expr="//form[1]//div[@itemscope='itemscope']//div[hasclass('ribbon-wrapper')]" position="replace">
             <t t-if="len(product.ks_product_tags.mapped('id'))">
                 <div class="ribbon-wrapper">
-                    <a href="#" role="button" class="ribbon btn btn-danger">
+                    <a href="javascript:void(0)" role="button" class="ribbon btn btn-danger">
                         <t t-esc="product.ks_product_tags[0].name"/>
                     </a>
                 </div>
@@ -907,7 +932,6 @@
                                 </a>
 
                                 <span>
-                                    <strong>Price:</strong>
                                     <div class="ks-price ks_comp_price">
                                         <span t-esc="combination_info['price']"
                                               t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"></span>
@@ -1082,26 +1106,6 @@
             </div>
         </div>
     </template>
-
-<!-- for slider of each product   -->
-
-
-    <template id="ks_slider_on_hover">
-            <div class="ks_shop_product_slider">
-            <t t-set="image_ids" t-value="product.product_image_ids"/>
-                <div class="owl-carousel ks_main_for_hover_slider">
-                    <div t-attf-class="carousel-item#{'' ' active'}"
-                         itemprop="image" t-field="product.image"
-                         t-options="{'widget': 'image', 'class': 'product_detail_img', 'alt-field': 'name', 'zoom': 'image', 'unique': product['__last_update']}"/>
-                    <t t-if="len(image_ids)" t-foreach="image_ids" t-as="pimg">
-                        <div class="carousel-item active" t-field="pimg.image"
-                             t-options='{"widget": "image", "class": "product_detail_img", "alt-field": "name", "zoom": "image" }'/>
-                    </t>
-                </div>
-            </div>
-    </template>
-
-
 </odoo>
 
 

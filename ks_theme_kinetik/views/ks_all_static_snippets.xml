@@ -84,7 +84,7 @@
                         <div class="ks-banner-txt">
                             <div class="ks-banner-txt-sub"   >New Arrivals</div>
                             <div class="ks-banner-txt-main"  >Don't Miss this <br/> Great Offers </div>
-                            <button class="btn ks-btn-theme"  >Shop Now </button>
+                             <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                         </div>
                         <div class="ks-banner-offer"> <span>20%</span>OFF</div>
                         <img class="d-block w-100" src="/ks_theme_kinetik/static/src/landing-pages-images/furniture-img/banner-2.png" alt="First slide" />
@@ -93,7 +93,7 @@
                         <div class="ks-banner-txt">
                             <div class="ks-banner-txt-sub"  >Best Sellers</div>
                             <div class="ks-banner-txt-main"  >Everybody Loves <br/>These Chairs </div>
-                            <button class="btn ks-btn-theme"  >Shop Now</button>
+                              <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                         </div>
                         <div class="ks-banner-offer"> <span>25%</span>OFF</div>
                         <img class="d-block w-100" src="/ks_theme_kinetik/static/src/landing-pages-images/furniture-img/banner-3.png" alt="First slide" />
@@ -102,7 +102,7 @@
                         <div class="ks-banner-txt">
                             <div class="ks-banner-txt-sub"   >Top Trending</div>
                             <div class="ks-banner-txt-main"  >The Eye Catching  <br/> Style Superior </div>
-                            <button class="btn ks-btn-theme"  >Shop Now</button>
+                             <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                         </div>
                         <div class="ks-banner-offer"> <span>20%</span>OFF</div>
                         <img class="d-block w-100" src="/ks_theme_kinetik/static/src/landing-pages-images/furniture-img/banner-4.png" alt="First slide" />
@@ -145,7 +145,7 @@
                                     <div class="ks-banner-txt-sub2">Best Sellers</div>
                                     <div class="ks-banner-txt-main2 text-dark">Everybody Loves <br />These Chairs </div>
                                     <div class="ks-slider-btn-outer my-4">
-                                         <button class="btn ks-btn-theme">Shop Now</button>
+                                          <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                                     </div>
                                 </div>
                             </div>
@@ -163,7 +163,7 @@
                                     <div class="ks-banner-txt-sub2">New Arrival</div>
                                     <div class="ks-banner-txt-main2 text-dark">Don't Miss <br />This Great Offer </div>
                                     <div class="ks-slider-btn-outer my-4">
-                                         <button class="btn ks-btn-theme">Shop Now</button>
+                                          <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                                     </div>
                                 </div>
                             </div>
@@ -181,7 +181,7 @@
                                     <div class="ks-banner-txt-sub2">Top Trending</div>
                                     <div class="ks-banner-txt-main2 text-dark">Eye Catching <br />Style Superior </div>
                                     <div class="ks-slider-btn-outer my-4">
-                                         <button class="btn ks-btn-theme">Shop Now</button>
+                                          <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                                     </div>
                                 </div>
                             </div>
@@ -200,7 +200,7 @@
                         <div class="ks-collection-secondary-text">Must have for rooms</div>
                     </section>
                     <section>
-                        <button class="btn ks-btn-theme ml-auto">Shop Now</button>
+                        <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                     </section>
                 </section>
                 <section class="ks-collection-item justify-content-center flex-column p-3 mb-2  ml-sm-2 mr-2 mr-sm-0" style="background-image:url('/ks_theme_kinetik/static/src/landing-pages-images/furniture-img/Product-banner-2.jpg')">
@@ -209,7 +209,7 @@
                         <div class="ks-collection-secondary-text">Keep things at one place easily</div>
                     </section>
                     <section>
-                        <button class="btn ks-btn-theme">Shop Now</button>
+                          <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                     </section>
                 </section>
                 <section class="ks-collection-item justify-content-center flex-column p-3 mt-2  mr-2 text-right" style="background-image:url('/ks_theme_kinetik/static/src/landing-pages-images/furniture-img/Product-banner-3.jpg')">
@@ -218,7 +218,7 @@
                         <div class="ks-collection-secondary-text">Comfortable to Sit, Attractive to Look</div>
                     </section>
                     <section>
-                        <button class="btn ks-btn-theme ml-auto">Shop Now</button>
+                         <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                     </section>
                 </section>
                 <section class="ks-collection-item justify-content-center flex-column p-3 mt-2  ml-sm-2 mr-2 mr-sm-0 mb-sm-0 mb-2" style="background-image:url('/ks_theme_kinetik/static/src/landing-pages-images/furniture-img/Product-banner-4.jpg')">
@@ -227,7 +227,7 @@
                         <div class="ks-collection-secondary-text">Available at Unbelievable price</div>
                     </section>
                     <section>
-                        <button class="btn ks-btn-theme">Shop Now</button>
+                         <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                     </section>
                 </section>
             </div>
@@ -243,7 +243,7 @@
                         <div class="ks-collection-secondary-text">Just Arrived for the new Season</div>
                     </div>
                     <section>
-                        <button class="btn ks-btn-theme">Shop Now</button>
+                          <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                     </section>
                 </section>
                 <section class="ks-collection-item-v2 mx-sm-4 my-4 my-sm-0 text-light p-3 flex-center flex-column"
@@ -253,7 +253,7 @@
                         <div class="ks-collection-secondary-text">Just Arrived for the new Season</div>
                     </div>
                     <section>
-                        <button class="btn ks-btn-theme">Shop Now</button>
+                         <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                     </section>
                 </section>
                 <section class="ks-collection-item-v2 text-light p-3 flex-center flex-column"
@@ -263,7 +263,7 @@
                         <div class="ks-collection-secondary-text">Just Arrived for the new Season</div>
                     </div>
                     <section>
-                        <button class="btn ks-btn-theme">Shop Now</button>
+                         <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                     </section>
                 </section>
             </div>
@@ -279,7 +279,7 @@
                             <h4 class="ks-collection-main-text">New Collection</h4>
                             <div class="ks-collection-secondary-text">Just Arrived for the new Season</div>
                         </div>
-                        <button class="btn ks-btn-theme ml-auto">Shop Now </button>
+                         <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                     </div>
                 </section>
                 <section class="ks-collection-item justify-content-center flex-column p-3 col-sm-6"
@@ -289,7 +289,7 @@
                             <h4 class="ks-collection-main-text">New Collection</h4>
                             <div class="ks-collection-secondary-text">Just Arrived for the new Season</div>
                         </div>
-                        <button class="btn ks-btn-theme">Shop Now</button>
+                         <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                     </div>
                 </section>
             </div>
@@ -307,7 +307,7 @@
                         <span class="ks-collection-large-text">50%</span>
                         <span class="ks-collection-small-text">OFF</span>
                         <div class="w-100">
-                            <button class="btn ks-btn-theme mb-3">Shop Now </button>
+                             <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                         </div>
                     </div>
                 </section>
@@ -320,7 +320,7 @@
                         <span class="ks-collection-large-text">40%</span>
                         <span class="ks-collection-small-text">OFF</span>
                         <div class="w-100">
-                            <button class="btn ks-btn-theme mb-3">Shop Now </button>
+                             <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                         </div>
                     </div>
                 </section>
@@ -333,7 +333,7 @@
                         <span class="ks-collection-large-text">65%</span>
                         <span class="ks-collection-small-text">OFF</span>
                         <div class="w-100">
-                            <button class="btn ks-btn-theme mb-3">Shop Now </button>
+                             <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                         </div>
                     </div>
                 </section>
@@ -346,7 +346,7 @@
                         <span class="ks-collection-large-text">15%</span>
                         <span class="ks-collection-small-text">OFF</span>
                         <div class="w-100">
-                            <button class="btn ks-btn-theme mb-3">Shop Now</button>
+                            <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                         </div>
                     </div>
                 </section>
@@ -364,7 +364,7 @@
                             <h4 class="ks-collection-main-text">New Collection</h4>
                             <div class="ks-collection-secondary-text">Just Arrived for the new Season</div>
                         </div>
-                        <button class="btn ks-btn-theme ml-auto">Shop Now</button>
+                         <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                     </div>
                 </section>
                 <section class="ks-collection-item justify-content-center flex-column p-3 col-sm-6 bp-bottom"
@@ -374,7 +374,7 @@
                             <h4 class="ks-collection-main-text">New Collection</h4>
                             <div class="ks-collection-secondary-text">Just Arrived for the new Season</div>
                         </div>
-                        <button class="btn ks-btn-theme">Shop Now</button>
+                       <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                     </div>
                 </section>
             </div>
@@ -1556,7 +1556,7 @@
                                                 our lives, it's incredible it's still o...
                                             </div>
                                             <div class="w-100 read-center">
-                                                <a href="/blog" class="btn ks-btn-theme">Read More</a>
+                                                <a href="/blog" class="btn ks-btn-theme" >Read More</a>
                                             </div>
                                         </div>
                                     </div>
@@ -1919,7 +1919,7 @@
                                 adipisicing elitLorem ipsum dolor s it ametr
                             </p>
                             <div class="mt-5 d-flex">
-                                <button class="btn ks-btn-theme mr-3">Read more</button>
+                                <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                             </div>
                         </div>
                     </div>
@@ -1963,7 +1963,7 @@
                                 adipisicing elitLorem ipsum dolor s it ametr
                             </p>
                             <div class="mt-5 d-flex">
-                                <button class="btn ks-btn-theme mr-3">Read more</button>
+                                <button class="btn ks-btn-theme mr-3" >Read more</button>
                             </div>
                         </div>
                     </div>
@@ -1992,7 +1992,7 @@
                             </p>
                             <div class="d-flex">
                                 <button class="btn ks-btn-theme mr-3 mt-5 ">Read more</button>
-                                <button class="btn ks-btn-theme mr-3 mt-5 ">Conatct Now</button>
+                                <button class="btn ks-btn-theme mr-3 mt-5 ">Contact Now</button>
                             </div>
                         </div>
                     </div>
@@ -2037,7 +2037,7 @@
                             </p>
                             <div class="mt-5 d-flex">
                                 <button class="btn ks-btn-theme mr-3 mb-3">Read more</button>
-                                <button class="btn ks-btn-theme mr-3 mb-3">Conatct Now</button>
+                                <button class="btn ks-btn-theme mr-3 mb-3">Contact Now</button>
                             </div>
                         </div>
                     </div>
@@ -2147,7 +2147,7 @@
                     <h1 class="display-4 ks-banner-heading">Everything You Need<br/>We Got for you
                     </h1>
                     <section class="ks-banner-btn d-inline-block mt-4">
-                        <div class="btn ks-btn-theme">Shop Now</div>
+                        <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                     </section>
                 </div>
             </section>
@@ -2162,7 +2162,7 @@
                     <h1 class="display-4 ks-banner-heading">Everything You Need<br/>We Got for you
                     </h1>
                     <section class="ks-banner-btn d-inline-block mt-4">
-                        <div class="btn ks-btn-theme">Shop Now</div>
+                        <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                     </section>
                 </div>
             </section>
@@ -2176,7 +2176,7 @@
                     <h4 class="b-600 top-animation">NEW SUMMER</h4>
                     <h1 class="ks-banner-heading">COLLECTIONS</h1>
                     <section class="ks-banner-btn d-inline-block mt-4">
-                        <div class="btn ks-btn-theme">Shop Now</div>
+                        <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                     </section>
                 </div>
             </section>
@@ -2245,10 +2245,10 @@
                     <h1 class="display-4 ks-banner-heading">Everything You Need<br/>We Got for you
                     </h1>
                     <section class="ks-banner-btn d-inline-block mt-4 mr-3">
-                        <div class="btn ks-btn-theme">Shop Now</div>
+                         <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                     </section>
                     <section class="ks-banner-btn d-inline-block mt-4">
-                        <div class="btn ks-btn-theme">View More</div>
+                        <div class="btn ks-btn-theme" href="/shop">View More</div>
                     </section>
                 </div>
             </section>
@@ -2263,10 +2263,10 @@
                     <h1 class="display-4 ks-banner-heading">Everything You Need<br/>We Got for you
                     </h1>
                     <section class="ks-banner-btn d-inline-block mt-4 mr-3">
-                        <div class="btn ks-btn-theme">Shop Now</div>
+                          <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                     </section>
                     <section class="ks-banner-btn d-inline-block mt-4 mr-3">
-                        <div class="btn ks-btn-theme">View More</div>
+                        <div class="btn ks-btn-theme" href="/shop">View More</div>
                     </section>
                 </div>
             </section>
@@ -2280,10 +2280,10 @@
                     <h4 class="b-600 top-animation">NEW SUMMER</h4>
                     <h1 class="ks-banner-heading">COLLECTIONS</h1>
                     <section class="ks-banner-btn d-inline-block mt-4 mr-3">
-                        <div class="btn ks-btn-theme">Shop Now</div>
+                         <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                     </section>
                     <section class="ks-banner-btn d-inline-block mt-4 mr-3">
-                        <div class="btn ks-btn-theme">View More</div>
+                        <div class="btn ks-btn-theme" href="/shop">View More</div>
                     </section>
                 </div>
             </section>
@@ -5302,7 +5302,7 @@
                                 </h3>
                             </div>
                             <section class="d-flex align-items-center w-100">
-                                <button class="btn ks-btn-theme">Conatct Now</button>
+                                <button class="btn ks-btn-theme">Contact Now</button>
                             </section>
                         </div>
                     </div>
@@ -5364,7 +5364,7 @@
                                 </h3>
                             </div>
                             <section class="d-flex align-items-center w-100">
-                                <button class="btn ks-btn-theme">Conatct Now</button>
+                                <button class="btn ks-btn-theme">Contact Now</button>
                             </section>
                         </div>
                     </div>
@@ -5386,7 +5386,7 @@
                                 </h3>
                             </div>
                             <section class="d-flex align-items-center w-100">
-                                <button class="btn ks-btn-theme">Conatct Now</button>
+                                <button class="btn ks-btn-theme">Contact Now</button>
                             </section>
                         </div>
                     </div>
@@ -5448,7 +5448,7 @@
                                 </h3>
                             </div>
                             <section class="d-flex align-items-center w-100">
-                                <button class="btn ks-btn-theme">Conatct Now</button>
+                                <button class="btn ks-btn-theme">Contact Now</button>
                             </section>
                         </div>
                     </div>
@@ -5471,7 +5471,7 @@
                                 </h3>
                             </div>
                             <section class="d-flex align-items-center w-100">
-                                <button class="btn ks-btn-theme">Conatct Now</button>
+                                <button class="btn ks-btn-theme">Contact Now</button>
                             </section>
                         </div>
                     </div>
@@ -5534,7 +5534,7 @@
                                 </h3>
                             </div>
                             <section class="d-flex align-items-center w-100">
-                                <button class="btn ks-btn-theme">Conatct Now</button>
+                                <button class="btn ks-btn-theme">Contact Now</button>
                             </section>
                         </div>
                     </div>
@@ -5557,7 +5557,7 @@
                                 </h3>
                             </div>
                             <section class="d-flex align-items-center w-100">
-                                <button class="btn ks-btn-theme">Conatct Now</button>
+                                <button class="btn ks-btn-theme">Contact Now</button>
                             </section>
                         </div>
                     </div>
@@ -5620,7 +5620,7 @@
                                 </h3>
                             </div>
                             <section class="d-flex align-items-center w-100">
-                                <button class="btn ks-btn-theme">Conatct Now</button>
+                                <button class="btn ks-btn-theme">Contact Now</button>
                             </section>
                         </div>
                     </div>
@@ -5860,7 +5860,7 @@
 
                 <!--  Hero Section     -->
                 <section class="img-slider" >
-                    <div id="onlyImgSlider" class="carousel slide mainTransparent" data-ride="carousel">
+                    <div id="onlyImgSliderGym" class="carousel slide mainTransparent" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <img class="d-block w-100" src="/ks_theme_kinetik/static/src/landing-pages-images/gym/g-1.jpg" alt="First slide" />
@@ -5869,10 +5869,10 @@
                                 <img class="d-block w-100" src="/ks_theme_kinetik/static/src/landing-pages-images/gym/g-1_1.jpg" alt="Second slide" />
                             </div>
                         </div>
-                        <a class="carousel-control-prev" data-target="#onlyImgSlider" role="button" data-slide="prev">
+                        <a class="carousel-control-prev" data-target="#onlyImgSliderGym" role="button" data-slide="prev">
                             <span class="carousel-control-prev-icon" />
                         </a>
-                        <a class="carousel-control-next" data-target="#onlyImgSlider" role="button" data-slide="next">
+                        <a class="carousel-control-next" data-target="#onlyImgSliderGym" role="button" data-slide="next">
                             <span class="carousel-control-next-icon" />
                         </a>
                     </div>
@@ -6971,7 +6971,7 @@
                                         </h3>
                                     </div>
                                     <section class="d-flex align-items-center w-100">
-                                        <button class="btn ks-btn-theme">Conatct Now</button>
+                                        <button class="btn ks-btn-theme">Contact Now</button>
                                     </section>
                                 </div>
                             </div>
@@ -7046,7 +7046,7 @@
                     </div>
                 </section>
 
-                <!--   Conatct Us     -->
+                <!--   Contact Us     -->
                 <section class="contactus-panel bg-white py-sm-5 container">
                     <div class="container-fluid">
                         <div class="row no-gutters border">
@@ -7193,7 +7193,7 @@
                                     <div class="ks-banner-txt-sub2">Best Sellers</div>
                                     <div class="ks-banner-txt-main2 text-dark">Everybody Loves <br />These Chairs </div>
                                     <div class="ks-slider-btn-outer my-4">
-                                         <button class="btn ks-btn-theme">Shop Now</button>
+                                          <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                                     </div>
                                 </div>
                             </div>
@@ -7211,7 +7211,7 @@
                                     <div class="ks-banner-txt-sub2">New Arrival</div>
                                     <div class="ks-banner-txt-main2 text-dark">Don't Miss <br />This Great Offer </div>
                                     <div class="ks-slider-btn-outer my-4">
-                                         <button class="btn ks-btn-theme">Shop Now</button>
+                                       <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                                     </div>
                                 </div>
                             </div>
@@ -7229,7 +7229,7 @@
                                     <div class="ks-banner-txt-sub2">Top Trending</div>
                                     <div class="ks-banner-txt-main2 text-dark">Eye Catching <br />Style Superior </div>
                                     <div class="ks-slider-btn-outer my-4">
-                                         <button class="btn ks-btn-theme">Shop Now</button>
+                                       <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                                     </div>
                                 </div>
                             </div>
@@ -7245,7 +7245,7 @@
                                     <div class="ks-collection-secondary-text">Must have for rooms</div>
                                 </section>
                                 <section>
-                                    <button class="btn ks-btn-theme ml-auto"> Shop Now </button>
+                                    <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                                 </section>
                             </section>
                             <section class="ks-collection-item justify-content-center flex-column p-3 mb-2  ml-sm-2 mr-2 mr-sm-0" style="background-image:url('/ks_theme_kinetik/static/src/landing-pages-images/furniture-img/Product-banner-2.jpg')">
@@ -7254,7 +7254,7 @@
                                     <div class="ks-collection-secondary-text">Keep things at one place easily</div>
                                 </section>
                                 <section>
-                                    <button class="btn ks-btn-theme"> Shop Now </button>
+                                   <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                                 </section>
                             </section>
                             <section class="ks-collection-item justify-content-center flex-column p-3 mt-2  mr-2 text-right" style="background-image:url('/ks_theme_kinetik/static/src/landing-pages-images/furniture-img/Product-banner-3.jpg')">
@@ -7263,7 +7263,7 @@
                                     <div class="ks-collection-secondary-text">Comfortable to Sit, Attractive to Look</div>
                                 </section>
                                 <section>
-                                    <button class="btn ks-btn-theme ml-auto"> Shop Now </button>
+                                    <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                                 </section>
                             </section>
                             <section class="ks-collection-item justify-content-center flex-column p-3 mt-2  ml-sm-2 mr-2 mr-sm-0 mb-sm-0 mb-2" style="background-image:url('/ks_theme_kinetik/static/src/landing-pages-images/furniture-img/Product-banner-4.jpg')">
@@ -7272,7 +7272,7 @@
                                     <div class="ks-collection-secondary-text">Available at Unbelievable price</div>
                                 </section>
                                 <section>
-                                    <button class="btn ks-btn-theme"> Shop Now </button>
+                                   <a role="button" class="btn ks-btn-theme ml-auto" href="/shop"> Shop Now </a>
                                 </section>
                             </section>
                         </div>
@@ -7321,9 +7321,8 @@
                                             <p class="text font-30 mt-4">Lowest price of Home Accessories</p>
                                         </div>
                                         <section class="d-flex justify-content-center align-items-center w-100">
-                                            <button class="btn ks-btn-theme">
-                                                <span> Shop Now </span>
-                                            </button>
+                                           <a role="button" class="btn ks-btn-theme ml-auto" href="/shop">   <span> Shop Now </span>
+                                           </a>
                                         </section>
                                     </div>
                                 </div>
@@ -9873,7 +9872,7 @@
                             <div class="col-lg-4 mb-5 wow slideInUp" data-wow-duration="1s" data-wow-delay="0.5s">
                                 <div class="ks-footer-card p-4 text-center" >
                                     <img src="/ks_theme_kinetik/static/src/landing-pages-images/christmas/ecommerce.svg" class="ks-footer-card-img mb-4" alt="" />
-                                    <div class="h2">Conatct Number</div>
+                                    <div class="h2">Contact Number</div>
                                     <div>
                                         +91 123-456-7890
                                     </div>

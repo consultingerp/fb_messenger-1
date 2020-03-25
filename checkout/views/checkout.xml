@@ -9,7 +9,8 @@
                         <div class="col-md-3">
                             <a href="/shop" class="btn btn-transparent btn-xwide mb16" ><i class="fa fa-long-arrow-left" /> CONTINUE SHOPPING</a>
                         </div>
-                        <div class="col-md-3 offset-md-6 text-center mt16 checkout-header-tiles d-none d-md-block">
+                        <!-- EDIT By Ram Mere no need for this header as it take unecessary space -->
+                        <!-- <div class="col-md-3 offset-md-6 text-center mt16 checkout-header-tiles d-none d-md-block">
                             <div class="row">
                                 <div class="col-lg-4 col-md-4"></div>
                                 <div class="col-lg-4 col-md-4">
@@ -21,7 +22,7 @@
                                     <p class="mt4">Express delivery</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <hr class="row mb0 mt0"/>
                     <data id="website_partner" t-att-data-website-partner="website.partner_id.id"/>
@@ -144,42 +145,35 @@
                     </h4>
                     <t t-call="checkout.payment_cart_lines"/>
                     <t t-call="website_sale.total"/>
-                    <div class="checkbox mb16">
+                    <!-- EDIT By Ram Mere no need for this right now -->
+                    <!-- <div class="checkbox mb16">
                         <label>
                             <input id="promotions" type="checkbox" class="text-normal">  Get promos and disccounts via email</input>
                         </label>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
     </template>
     <template id="billing_form" name="Billing Form">
-        <t t-set="countries" t-value="env['res.country'].sudo().search([])"/>
+        <t t-set="countries" t-value="env['res.country'].sudo().search([('active','=',true)])"/>
         <form name="/shop/checkout" method="post" class="checkout_autoformat" id="BillingAddressForm">
             <div t-attf-class="form-group name col-lg-12 col-md-12 col-sm-12 col-12">
                 <label class="control-label" for="name"><span class="text-secondary">*</span> Complete name</label>
                 <input type="text" name="name" class="form-control" required="1" t-att-value="'name' in website_sale_order.partner_id and website_sale_order.partner_id['name'] != 'Public user' and website_sale_order.partner_id['name']"/>
             </div>
-            <div t-attf-class="form-group col-lg-12 col-md-12 col-sm-6 col-12" id="email">
-                <label class="control-label" for="email"><span class="text-secondary">*</span> Email</label>
-                <input type="email" name="email" class="form-control" required="1" t-att-value="'email' in website_sale_order.partner_id and website_sale_order.partner_id['email']"/>
-            </div>
-            <div t-attf-class="form-group col-lg-12 col-md-12 col-sm-6 col-12">
+            
+            <!-- EDIT by Ram Mere no need for company name-->
+            <!-- <div t-attf-class="form-group col-lg-12 col-md-12 col-sm-6 col-12">
                 <label class="control-label" for="company_name">Company Name</label>
                 <input type="text" name="company_name" class="form-control" t-att-value="'company_name' in website_sale_order.partner_id and website_sale_order.partner_id['company_name']"/>
-            </div>
-            <div t-attf-class="form-group vat col-lg-12 col-md-12 col-sm-6 col-12">
+            </div> -->
+            <!-- EDIT by Ram Mere no need for VAT-->
+            <!-- <div t-attf-class="form-group vat col-lg-12 col-md-12 col-sm-6 col-12">
                 <label class="control-label" for="vat">VAT</label>
                 <input type="text" name="vat"  id="vat" class="form-control" t-att-value="'vat' in website_sale_order.partner_id and website_sale_order.partner_id['vat']"/>
-            </div>
-            <div t-attf-class="form-group street col-lg-12 col-md-12 col-sm-12 col-12">
-                <label class="control-label" for="street"><span class="text-secondary">*</span> Street</label>
-                <input type="text" name="street" class="form-control" required="1" t-att-value="'street' in website_sale_order.partner_id and website_sale_order.partner_id['street']"/>
-            </div>
-            <div t-attf-class="form-group zip col-lg-12 col-md-12 col-sm-6 col-12">
-                <label class="control-label" for="zip"><span class="text-secondary">*</span> Zip Code <small>required for shipping</small></label>
-                <input type="text" name="zip" class="form-control" required="1" t-att-value="'zip' in website_sale_order.partner_id and website_sale_order.partner_id['zip']"/>
-            </div>
+            </div> -->
+
             <div t-attf-class="form-group country">
               <label class="control-label" for="country_id"><span class="text-secondary">*</span> Country</label>
               <select name="country_id" class="form-control" required="1">
@@ -199,13 +193,32 @@
                     </t>
                 </select>
             </div>
-            <div t-attf-class="form-group city col-lg-12 col-md-12 col-sm-6 col-12">
+
+            <!-- EDIT by Ram Mere From Street to Address-->
+            <div t-attf-class="form-group street col-lg-12 col-md-12 col-sm-12 col-12">
+                <label class="control-label" for="street"><span class="text-secondary">*</span>Address</label>
+                <input type="text" name="street" class="form-control" required="1" t-att-value="'street' in website_sale_order.partner_id and website_sale_order.partner_id['street']"/>
+            </div>
+            <!-- EDIT by Ram Mere no need for ZIP-->
+            <!-- <div t-attf-class="form-group zip col-lg-12 col-md-12 col-sm-6 col-12">
+                <label class="control-label" for="zip"><span class="text-secondary">*</span> Zip Code <small>required for shipping</small></label>
+                <input type="text" name="zip" class="form-control" required="1" t-att-value="'zip' in website_sale_order.partner_id and website_sale_order.partner_id['zip']"/>
+            </div> -->
+       
+            <!-- EDIT by Ram Mere No Need for city ( since state is enough-->
+            <!-- <div t-attf-class="form-group city col-lg-12 col-md-12 col-sm-6 col-12">
                 <label class="control-label" for="city"><span class="text-secondary">*</span> City</label>
                 <input type="text" name="city" class="form-control" required="1" t-att-value="'city' in website_sale_order.partner_id and website_sale_order.partner_id['city']"/>
-            </div>
+            </div> -->
             <div t-attf-class="form-group col-lg-12 col-md-12 col-sm-6 col-12" id="phone">
                 <label class="control-label" for="phone"><span class="text-secondary">*</span> Phone or mobile</label>
                 <input type="tel" name="phone" class="form-control" required="1" t-att-value="'phone' in website_sale_order.partner_id and website_sale_order.partner_id['phone']"/>
+
+            </div>
+            <div t-attf-class="form-group col-lg-12 col-md-12 col-sm-6 col-12" id="email">
+            <!-- EDIT by Ram Mere no need to require Email -->
+                <label class="control-label" for="email">Email</label>
+                <input type="email" name="email" class="form-control"  t-att-value="'email' in website_sale_order.partner_id and website_sale_order.partner_id['email']"/>
             </div>
             <div class="clearfix" />
             <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
@@ -248,10 +261,11 @@
                 <label class="control-label" for="street"><span class="text-secondary">*</span> Street</label>
                 <input type="text" t-att-value="contact and contact.street" name="street" class="form-control" required="1"/>
             </div>
-            <div t-attf-class="form-group zip col-lg-12 col-md-12 col-sm-6 col-12">
+            <!-- EDIT By Ram Mere no Need for zip code -->
+            <!-- <div t-attf-class="form-group zip col-lg-12 col-md-12 col-sm-6 col-12">
                 <label class="control-label" for="zip"><span class="text-secondary">*</span> Zip Code</label>
                 <input type="text" t-att-value="contact and contact.zip" name="zip" class="form-control" required="1" />
-            </div>
+            </div> -->
             <div t-attf-class="form-group country col-lg-12 col-md-12 col-sm-6 col-12">
               <label class="control-label" for="country_id"><span class="text-secondary">*</span> Country</label>
               <select name="country_id" class="form-control" required="1">
@@ -271,10 +285,11 @@
                     </t>
                 </select>
             </div>
-            <div t-attf-class="form-group city col-lg-12 col-md-12 col-sm-6 col-12">
+            <!-- EDIT By Ram Mere no Need for city -->
+            <!-- <div t-attf-class="form-group city col-lg-12 col-md-12 col-sm-6 col-12">
                 <label class="control-label" for="city"><span class="text-secondary">*</span> City</label>
                 <input type="text" t-att-value="contact and contact.city" name="city" class="form-control" required="1" />
-            </div>
+            </div> -->
             <div t-attf-class="form-group col-lg-12 col-md-12 col-sm-6 col-12" id="phone">
                 <label class="control-label" for="phone"><span class="text-secondary">*</span> Phone or mobile</label>
                 <input type="tel" t-att-value="contact and contact.phone" name="phone" class="form-control" required="1"/>
@@ -398,8 +413,9 @@
     </template>
     <template id="carriers" name="carriers">
         <div class="row">
-            <div class="col-12">
-                <div id="delivery_carrier">
+            <!-- PADDING UPDATED BY Ram Mere -->
+            <div class="col-12" style="padding:0px !important">
+                <div id="delivery_carrier" >
                     <data id="carrier_partner" t-att-data-carrier-partner="partner_id"/>
                     <h4 class="text-primary section-title">
                         <i class="fa fa-circle fa-2x" />

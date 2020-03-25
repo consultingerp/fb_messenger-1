@@ -4,7 +4,7 @@ odoo.define('ks_ecommerce_theme.search_autocomplete', function (require) {
         var options = {
 
             url:function(query) {
-                return "/get/search/suggestions/" + query;
+                return "/get/search/suggestions/" + unescape(encodeURIComponent(query));
               },
             listLocation: "result",
             theme: "plate-dark",
