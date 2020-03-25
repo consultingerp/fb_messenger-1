@@ -1,0 +1,22 @@
+<odoo>
+  <data>
+
+    <!-- explicit list view definition -->
+    
+    <record model="ir.ui.view" id="grefoot_inherit_country_view_form">
+      <field name="name">grefoot_inherit_country_view_form</field>
+      <field name="model">res.country</field>
+      <field name="type">form</field>
+      <field name="inherit_id" ref="base.view_country_form"/>
+      <field name="arch" type="xml">
+        <data>
+          <xpath expr="//field[@name='name']" position="after">
+          <field name="active"/>
+        </xpath>
+        </data>
+      </field>
+    </record>
+   
+
+  </data>
+</odoo>

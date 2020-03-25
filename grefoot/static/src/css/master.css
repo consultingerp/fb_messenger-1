@@ -11,3 +11,11 @@
     left:1pt !important;
     bottom:88pt !important;
 }
+.highlightPopUp
+{
+    background-color:rgba(105, 187, 123,.9) !important;
+    color:white;
+    font-weight: bolder;
+    padding:5px !important;
+
+}
