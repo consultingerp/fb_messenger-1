@@ -1,0 +1,79 @@
+<odoo>
+  <data>
+
+    <!-- explicit list view definition -->
+    
+    <record model="ir.ui.view" id="grefoot_mobile_config_view_form">
+      <field name="name">grefoot_mobile_config_view_form</field>
+      <field name="model">grefoot.mobile_config</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form>
+
+          <header>
+            <!-- Buttons and status widget -->
+          </header>
+
+          <sheet>
+
+            <group name="group_top">
+              <group name="group_left">
+                <field name="facebook_app_id" />
+                <field name="address" />
+                <field name="state" />
+                <field name="country" />
+                <field name="contact_us_email" />
+                <field name="latitude" />
+                <field name="longitude" />
+                <field name="phone_no" />
+                <field name="fcm_android_sender_id" />
+                <field name="lazzy_loading_effect" />
+                <field name="new_product_duration" />
+                <field name="notification_title" />
+                <field name="notification_text" />
+                <field name="notification_duration" />
+                <field name="currency_symbol" />
+                <field name="cart_button" />
+                <field name="footer_button" />
+                <field name="app_name" />
+                <field name="home_style" />
+                <field name="category_style" />
+                <field name="site_url" />
+                <field name="intro_page" />
+                <field name="my_orders_page" />
+                <field name="news_page" />
+                <field name="wish_list_page" />
+                <field name="shipping_address_page" />
+                <field name="about_us_page" />
+                <field name="contact_us_page" />
+                <field name="edit_profile_page" />
+                <field name="package_name" />
+                <field name="setting_page" />
+                <field name="admob" />
+                <field name="ad_unit_id_banner" />
+                <field name="ad_unit_id_interstitial" />
+                <field name="google_analytic_id" />
+                <field name="rate_app" />
+                <field name="share_app" />
+                <field name="facebook_login" />
+                <field name="google_login" />
+                <field name="default_notification" />
+                <field name="onesignal_app_id" />
+                <field name="onesignal_sender_id" />
+                <field name="ios_admob" />
+                <field name="ios_ad_unit_id_banner" />
+                <field name="ios_ad_unit_id_interstitial" />
+                <field name="app_icon_image" />
+              </group>
+            </group>
+
+          </sheet>
+          <!-- History and communication: -->
+          <!-- <div class="oe_chatter"> </div> -->
+        </form>
+      </field>
+    </record>
+   
+
+  </data>
+</odoo>

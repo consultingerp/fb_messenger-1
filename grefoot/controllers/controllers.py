@@ -9,28 +9,30 @@ class Grefoot(http.Controller):
     def index(self, **kw):
         return "I am a live"
 
-    @http.route('/grefoot/api/products/',method=['POST'],auth='public',type='json')
-    def product_list(self, **kw):
-
-        fields = ""
+    @http.route('/grefoot/api/global/',method=['POST'],auth='public',type='json')
+    def record_list(self, **kw):
         model = ""
-        
-        if 'model' in http.request.params:
-            model = http.request.params['model'] 
-        if 'fields' in http.request.params:
-            fields = http.request.params['fields']
+
+        data = http.request.params
+
+        if 'model' in data:
+            model = data['model']
+        else:
+            return {'code':404, 'records':records}
+
+        domain = None if 'domain' not in data else data['domain']
+        fields = None if 'fields' not in data else data['fields']
+        offset = 0 if 'offset' not in data else data['offset']
+        limit = None if 'limit' not in data else data['limit']
+        order = None if 'order' not in data else data['order']
 
         headers = {'Content-Type': 'application/json'}
 
-        records = http.request.env[model].sudo().search_read([],fields=fields)
+        records = http.request.env[model].sudo().search_read(domain, fields, offset, limit, order)
+
         if 'product_tmpl_id' in fields:
             for rec in records:
                 rec['product_tmpl_id'] = rec['product_tmpl_id'][0]
-
-        if fields and model:
-            pass
-        else:
-            return {'code':404, 'records':records}
 
         return {'code':200,'records':records}
 

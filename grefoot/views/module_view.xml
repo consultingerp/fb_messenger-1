@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<odoo>
+  <data>
+
+    <!-- Main Menu  -->
+    <menuitem id="grefoot_top_menu" name="Grefoot" sequence="1" web_icon="grefoot,static/description/icon.png" groups="base.group_user"/>
+
+    <!-- Mobile Configurations -->
+    <act_window id="action_grefoot_mobile_config" name="Mobile Configurations" res_model="grefoot.mobile_config" view_mode="tree,form"/>
+    <menuitem id="menu_grefoot_mobile_config" name="Mobile Configurations" parent="grefoot_top_menu" sequence="2" action="action_grefoot_mobile_config" />
+
+  </data>
+</odoo>

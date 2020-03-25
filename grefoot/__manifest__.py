@@ -24,11 +24,13 @@
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
         'views/views.xml',
+        'views/module_view.xml',
         'views/templates.xml',
         'models/inherit/contact_us_form/grefoot_contact_us_form_website.xml',
         'models/inherit/grefoot_country/grefoot_country_view.xml',
+        'models/mobile_config/mobile_config_view.xml'
         # 'models/inherit/grefoot_website_sale_address/grefoot_website_sale_address.xml'
     ],
     # only loaded in demonstration mode
