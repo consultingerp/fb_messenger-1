@@ -156,7 +156,7 @@
         </div>
     </template>
     <template id="billing_form" name="Billing Form">
-        <t t-set="countries" t-value="env['res.country'].sudo().search([('active','=',true)])"/>
+        <t u-set="countries" t-value="env['res.country'].sudo().search([])"/>
         <form name="/shop/checkout" method="post" class="checkout_autoformat" id="BillingAddressForm">
             <div t-attf-class="form-group name col-lg-12 col-md-12 col-sm-12 col-12">
                 <label class="control-label" for="name"><span class="text-secondary">*</span> Complete name</label>
