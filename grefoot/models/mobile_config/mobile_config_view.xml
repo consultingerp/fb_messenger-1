@@ -2,13 +2,19 @@
   <data>
 
     <!-- explicit list view definition -->
+
+    <data noupdate="1">
+    <record id="my_record_01" model="grefoot.mobile_config">
+        <field name="facebook_app_id">value</field>
+    </record>
+    </data>
     
     <record model="ir.ui.view" id="grefoot_mobile_config_view_form">
       <field name="name">grefoot_mobile_config_view_form</field>
       <field name="model">grefoot.mobile_config</field>
       <field name="type">form</field>
       <field name="arch" type="xml">
-        <form>
+        <form create="false" delete="false">
 
           <header>
             <!-- Buttons and status widget -->
@@ -73,7 +79,18 @@
         </form>
       </field>
     </record>
-   
+
+    <record model="ir.ui.view" id="grefoot_mobile_config_view_tree">
+      <field name="name">grefoot_mobile_config_view_tree</field>
+      <field name="model">grefoot.mobile_config</field>
+      <field name="type">tree</field>
+      <field name="arch" type="xml">
+        <tree create="false" delete="false">
+            <field name="app_name" />
+            <field name="site_url" />
+        </tree>
+      </field>
+    </record>
 
   </data>
 </odoo>
