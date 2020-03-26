@@ -3,9 +3,7 @@ odoo.define('website_add_product.website_add_product', function (require) {
 var ajax = require('web.ajax');
 
 $(document).ready(function () {
-	debugger;
 $('.dynamic_add_pro').click(function(){
-	debugger;
     ajax.jsonRpc("/shop/cart/update_json", 'call', {
         'product_id': parseInt($(this).attr('product_id'),10),
        
