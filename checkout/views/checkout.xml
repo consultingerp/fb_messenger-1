@@ -27,11 +27,11 @@
                     <hr class="row mb0 mt0"/>
                     <data id="website_partner" t-att-data-website-partner="website.partner_id.id"/>
                     <data id="order_partner" t-att-data-order-partner="website_sale_order.partner_id.id"/>
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-sm-11">
                             <h2 class="mt8 mb16">Express Checkout</h2>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="row express-checkout-section">
                         <div class="col-lg-3 col-md-3 col-sm-10 col-12 col-md-offset-0 col-sm-offset-1 col-offset-0 address-column">
                             <h4 class="text-primary section-title">
@@ -156,7 +156,7 @@
         </div>
     </template>
     <template id="billing_form" name="Billing Form">
-        <t u-set="countries" t-value="env['res.country'].sudo().search([])"/>
+        <t t-set="countries" t-value="env['res.country'].sudo().search([])"/>
         <form name="/shop/checkout" method="post" class="checkout_autoformat" id="BillingAddressForm">
             <div t-attf-class="form-group name col-lg-12 col-md-12 col-sm-12 col-12">
                 <label class="control-label" for="name"><span class="text-secondary">*</span> Complete name</label>
