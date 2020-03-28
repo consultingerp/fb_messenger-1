@@ -1,13 +1,77 @@
 # -*- coding: utf-8 -*-
 from odoo import http
 import json
-from openerp.http import Response 
+import openerp.addons.web.controllers.main as main
+from openerp.http import Response , request
 
+class Extension(main.Session):
+
+    @http.route('/web/session/authenticate', type='json', auth="none",csrf=False,website=False)
+    def authenticate(self, db, login, password, base_location=None):
+        uid=request.session.authenticate(db,login.lower(),password)
+        response_arr = []
+        if uid==False:
+             response_arr.append({"code": 406, "message":'user not registered'})
+             return response_arr
+        partner=request.env['res.partner'].sudo().search([('user_ids','=',uid)])
+        if bool(partner) == False :
+           response_arr.append({"code": 404, "message": 'partner not exist'})
+           return response_arr
+        else:
+            data = {
+            "phone":partner.phone,
+            "id":partner.id,
+            "first_name":partner.name,
+            "avatar": partner.image,
+            "dob": ""
+            }
+            response_arr.append({"code": 200, "data":data})
+            return response_arr
 
 class Grefoot(http.Controller):
     @http.route('/grefoot/grefoot/', type='json',website=True,auth='public')
     def index(self, **kw):
         return "I am a live"
+
+    @http.route('/grefoot/api/signup/', type='json',method=['POST'],auth='public')
+    def register(self, **kw):
+        data = http.request.params
+
+        is_identical = False
+        
+        if 'password' in data and 'confirm_password' in data:
+            if data['password'] == data['confirm_password']:
+                is_identical = True
+
+        if is_identical:
+            if 'customers_firstname' in data and 'email' in data:
+                user = request.env['res.users'].sudo().create({
+                    'password': data['password'],
+                    'name': data['customers_firstname'],
+                    'login': data['email'],
+                    'active': True
+                    })
+            else:
+                return {'code':404, 'message':'missing username or email'}
+        else:
+            return {'code':404, 'message':'passwords not identical'}
+        
+        if user:
+            partner = request.env['res.partner'].sudo().search([('user_ids','=',user.id)])
+            if partner:
+                partner.phone = data['customers_telephone']
+
+                data = {
+                    "phone":partner.phone,
+                    "id":partner.id,
+                    "first_name":partner.name,
+                    "avatar": partner.image,
+                    "dob": ""
+                }
+            else:
+                return{'code': 200, 'message': 'partner not found', 'records': {}}
+
+        return {'code': 200, 'message': 'user registored successfully', 'records':data}
 
     @http.route('/grefoot/api/global/',method=['POST'],auth='public',type='json')
     def record_list(self, **kw):
