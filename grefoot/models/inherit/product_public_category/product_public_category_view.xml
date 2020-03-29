@@ -1,0 +1,24 @@
+<odoo>
+  <data>
+
+    <!-- explicit list view definition -->
+    
+    <record model="ir.ui.view" id="grefoot_inherit_product_public_category_view_form">
+      <field name="name">grefoot_inherit_product_public_category_view_form</field>
+      <field name="model">product.public.category</field>
+      <field name="type">form</field>
+      <field name="inherit_id" ref="website_sale.product_public_category_form_view"/>
+      <field name="arch" type="xml">
+        <data>
+            <notebook position="inside">
+                <page string="Products">
+                    <field name="product_ids"/>
+                </page>                     
+            </notebook>
+        </data>
+      </field>
+    </record>
+   
+
+  </data>
+</odoo>
