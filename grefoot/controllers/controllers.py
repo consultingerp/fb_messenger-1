@@ -19,11 +19,26 @@ class Extension(main.Session):
            return response_arr
         else:
             data = {
-            "phone":partner.phone,
-            "id":partner.id,
-            "first_name":partner.name,
-            "avatar": partner.image,
-            "dob": ""
+            "phone": partner.phone,
+            "id": partner.id,
+            "name": partner.name,
+            "image": partner.image,
+            "birthdate": "",
+            "lat": "",
+            "long": "",
+            "mobile": partner.mobile,
+            "lang": partner.lang,
+            "country_id": partner.country_id.id,
+            "state_id": partner.state_id.id,
+            "email": partner.email,
+            "uid": uid,
+            "active": partner.active,
+            "property_product_pricelist": partner.property_product_pricelist,
+            "login": login,
+            "gender": "",
+            "debit": partner.debit,
+            "credit": partner.credit,
+            "password": password
             }
             response_arr.append({"code": 200, "data":data})
             return response_arr
@@ -62,11 +77,26 @@ class Grefoot(http.Controller):
                 partner.phone = data['customers_telephone']
 
                 data = {
-                    "phone":partner.phone,
-                    "id":partner.id,
-                    "first_name":partner.name,
-                    "avatar": partner.image,
-                    "dob": ""
+                    "phone": partner.phone,
+                    "id": partner.id,
+                    "name": partner.name,
+                    "image": partner.image,
+                    "birthdate": "",
+                    "lat": "",
+                    "long": "",
+                    "mobile": partner.mobile,
+                    "lang": partner.lang,
+                    "country_id": partner.country_id.id,
+                    "state_id": partner.state_id.id,
+                    "email": partner.email,
+                    "uid": user.id,
+                    "active": partner.active,
+                    "property_product_pricelist": partner.property_product_pricelist,
+                    "login": data['email'],
+                    "gender": "",
+                    "debit": partner.debit,
+                    "credit": partner.credit,
+                    "password": data['password']
                 }
             else:
                 return{'code': 200, 'message': 'partner not found', 'records': {}}
