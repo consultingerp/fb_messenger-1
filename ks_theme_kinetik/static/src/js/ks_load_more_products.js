@@ -66,7 +66,6 @@ odoo.define('ks_ecommerce_theme.ks_load_more_products', function (require) {
                 }
             }
             $('.ks_main_for_hover_slider').owlCarousel({
-                rtl:true,
                 dots : true,
                 loop:true,
                 items:1,

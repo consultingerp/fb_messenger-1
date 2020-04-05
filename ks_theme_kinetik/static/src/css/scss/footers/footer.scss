@@ -254,3 +254,24 @@ footer {
         margin-left: 24px;
     }
 }
+.ks_footer_01{
+    h3{
+        min-width: 160px;
+        margin-bottom: 0px;
+    }
+    .alert{
+        margin-bottom: 0px;
+    }
+}
+
+.newsletter{
+  .form-control{
+    height: 36px;
+  }
+  .btn{
+    height: 36px;
+    &:hover{
+      transform: translateY(0) !important;
+    }
+  }
+}

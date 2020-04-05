@@ -79,6 +79,7 @@
              font-size: 18px;
              position: relative;
              top: -3px;
+             margin-left: 8px;
            }
 
            ~ div {
@@ -294,6 +295,10 @@
     .card.js_cart_summary{
         margin-top: 30px;
         margin-bottom: 20px;
+
+        hr.d-none {
+            display: block !important;
+        }
     }
 }
 

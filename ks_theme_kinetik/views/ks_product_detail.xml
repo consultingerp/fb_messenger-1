@@ -372,7 +372,7 @@
     <template id = "website_sale.recommended_products" inherit_id="website_sale.product" customize_show="True" name="Alternative Products" active="False">
         <xpath expr="//section[@id='product_detail']" position="after">
              <div class="w-100 d-flex justify-content-center row ks-alternate-product-row">
-                 <div class="ks_alternate_slider container mt32 col-md-6 col-12 pr-xl-5" t-if="product.alternative_product_ids and product.ks_is_alternate_slider">
+                 <div class="ks_alternate_slider container mt32 col-md-6 col-12 pr-xl-5 mb-5" t-if="product.alternative_product_ids and product.ks_is_alternate_slider">
                         <h3 class="theme__heading">Alternative Products</h3>
                         <div class="row mt16 owl-carousel owl-theme alternate-prod-owl" style="">
                             <t t-foreach="product.alternative_product_ids" t-as="alt_product">
@@ -386,18 +386,33 @@
                                                 <span t-att-title="alt_product.name" t-field="alt_product.name"
                                                       class="o_text_overflow" style="display: block;"/>
                                             </div>
-                                            <div class="fp__price ks_price_info d-flex justify-content-center align-items-center">
+                                            <div class="fp__price ks_price_info d-flex align-items-center">
                                                 <div class="fp__current_price d-flex">
-                                                    <span t-if="alt_product.list_price" t-esc="alt_product.list_price"
+                                                    <span t-if="alt_product.price" t-esc="alt_product.price"
                                                           t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
                                                     <span itemprop="priceCurrency" style="display:none;"
                                                           t-esc="website.currency_id.name"/>
                                                 </div>
-                                                <t t-if="True"><!-- compatibility 12.0 -->
-                                                    <del t-attf-class="ks_public_price {{'' if combination_info['has_discounted_price'] else 'd-none'}}"
+                                                <t t-if="alt_product['list_price'] == 0" t-set="percentage_discounts"
+                                                       t-value="0"/>
+                                                <t t-else="" t-set="percentage_discounts"
+                                                   t-value="((alt_product['list_price']-alt_product['price'])/alt_product['list_price'])*100"/>
+                                                <t t-if="percentage_discounts > 0">
+                                                    <del t-attf-class="ks_public_price"
                                                          style="white-space: nowrap;"
-                                                         t-esc="combination_info['list_price']"
+                                                         t-esc="alt_product['list_price']"
                                                          t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                                </t>
+                                                <t t-if="request.website.viewref('ks_theme_kinetik.percent_discount').active">
+                                                    <t t-if="percentage_discounts > 0">
+                                                        <div class="ks_snippet_percentage_discount_2">
+                                                            <div class="ks_Percentage-offer">
+                                                                <span>(</span>
+                                                                <t t-esc="int(percentage_discounts)"/>%
+                                                                <span class="ks_percentage_info">off)</span>
+                                                            </div>
+                                                        </div>
+                                                    </t>
                                                 </t>
                                             </div>
                                         </div>
@@ -406,12 +421,12 @@
                             </t>
                         </div>
                     </div>
-                 <div class="ks_alternate_slider ks_accessories_slider container mt32 col-md-6 col-12 pl-xl-5" t-if="product.accessory_product_ids and product.ks_is_accessories_slider">
+                 <div class="ks_alternate_slider ks_accessories_slider container mt32 col-md-6 col-12 pl-xl-5 mb-5" t-if="product.accessory_product_ids and product.ks_is_accessories_slider">
                         <h3 class="theme__heading">Accessories</h3>
                         <div class="row mt16 owl-carousel owl-theme accessories-prod-owl" style="">
                             <t t-foreach="product.accessory_product_ids" t-as="alt_product">
                                 <div class="mt-2" >
-                                    <a t-attf-href="/shop/product/#{ slug(alt_product) }"
+                                    <a t-attf-href="/shop/product/#{ slug(alt_product.product_tmpl_id) }"
                                        style="display: block">
                                         <div class="mt16 text-center">
                                             <div t-field="alt_product.image"
@@ -420,19 +435,35 @@
                                                 <span t-att-title="alt_product.name" t-field="alt_product.name"
                                                       class="o_text_overflow" style="display: block;"/>
                                             </div>
-                                            <div class="fp__price ks_price_info d-flex justify-content-center align-items-center">
+                                            <div class="fp__price ks_price_info d-flex align-items-center">
                                                 <div class="fp__current_price d-flex">
-                                                    <span t-if="alt_product.list_price" t-esc="alt_product.list_price"
+                                                    <span t-if="alt_product.price" t-esc="alt_product.price"
                                                           t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
                                                     <span itemprop="priceCurrency" style="display:none;"
                                                           t-esc="website.currency_id.name"/>
                                                 </div>
-                                                 <t t-if="True"><!-- compatibility 12.0 -->
-                                                    <del t-attf-class="ks_public_price {{'' if combination_info['has_discounted_price'] else 'd-none'}}"
+                                                <t t-if="alt_product['list_price'] == 0" t-set="percentage_discounts"
+                                                       t-value="0"/>
+                                                <t t-else="" t-set="percentage_discounts"
+                                                   t-value="((alt_product['list_price']-alt_product['price'])/alt_product['list_price'])*100"/>
+                                                <t t-if="percentage_discounts > 0">
+                                                    <del t-attf-class="ks_public_price"
                                                          style="white-space: nowrap;"
-                                                         t-esc="combination_info['list_price']"
+                                                         t-esc="alt_product['list_price']"
                                                          t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
                                                 </t>
+                                                <t t-if="request.website.viewref('ks_theme_kinetik.percent_discount').active">
+                                                    <t t-if="percentage_discounts > 0">
+                                                        <div class="ks_snippet_percentage_discount_2">
+                                                            <div class="ks_Percentage-offer">
+                                                                <span>(</span>
+                                                                <t t-esc="int(percentage_discounts)"/>%
+                                                                <span class="ks_percentage_info">off)</span>
+                                                            </div>
+                                                        </div>
+                                                    </t>
+                                                </t>
+
                                             </div>
                                         </div>
                                     </a>

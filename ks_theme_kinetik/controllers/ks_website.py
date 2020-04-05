@@ -81,11 +81,11 @@ class Website(Home):
             'product': product,
             'add_qty': add_qty,
             'optional_product_ids': [p.with_context({'active_id': p.id}) for p in product.optional_product_ids],
-            'ks_quick_pre_loop': len(product.product_image_ids.ids),
+            'per_desc': ((product.website_public_price-product.website_price)/product.website_public_price)*100 if product.website_public_price > 0 else 0,
             # get_attribute_exclusions deprecated, use product method
            # 'get_attribute_exclusions': self._get_attribute_exclusions,
         }
-        return [request.env['ir.ui.view'].render_template("ks_theme_kinetik.product",values),len(values['optional_product_ids']), values['ks_quick_pre_loop']]
+        return [request.env['ir.ui.view'].render_template("ks_theme_kinetik.product",values),len(values['optional_product_ids']), values]
 
 
 

@@ -1,16 +1,11 @@
 // Header  transparent (Header - 11)
+
 .ks-header-11{
-     background: rgba(0, 0, 0, 0.4) !important;
+//      background: rgba(0, 0, 0, 0.4) !important;
      max-width: 100%;
      width: 100%;
-     @media(min-width: 1280px){
-        padding-left: 5%;
-        padding-right: 5%;
-     }
-     @media(max-width: 1279px){
-        padding-left: 10px;
-        padding-right: 10px;
-     }
+     padding-left: 10px;
+     padding-right: 10px;
 
      &.ks-header-6 {
         .ks-search-trigger{
@@ -74,7 +69,7 @@
 
     &.affixed {
         display: flex;
-        background: rgba(0, 0, 0, 0.6) !important;
+        //background: rgba(0, 0, 0, 0.6) !important;
         .ks-header-6-logo{
             display: block !important;
         }
@@ -106,7 +101,8 @@
                     margin-left: 0px;
                 }
                 .ks-header-6-items{
-                     max-width: 60px;
+                    max-width: 80px;
+                    flex: 0 0 80px;
                 }
             }
         }
@@ -137,13 +133,14 @@
             text-align: center;
             margin-left: 0px;
         }
+
         &.ks-header-6 .ks-header-6-items{
             background: transparent;
             max-width: 200px;
             flex: 0 0 200px;
             @media(max-width: 575px){
-                max-width: 140px;
-                flex: 0 0 140px;
+                max-width: 160px;
+                flex: 0 0 160px;
             }
             @media(max-width: 375px){
                 max-width: 120px;
@@ -153,8 +150,8 @@
             padding: 0px;
              .remove_after_content{
                 margin-right: 0px;
-                max-width: 60px;
-                flex: 0 0 60px;
+                max-width: 35px;
+                flex: 0 0 35px;
                 @media(max-width: 375px){
                  max-width: 30px;
                  flex: 0 0 30px;
@@ -177,30 +174,30 @@
             }
         }
         .ks-header-6-items .ks-header-6-wish {
-            margin: 0 5px;
+            margin: 0 15px !important;
         }
         #my_cart_2{
             margin-left: 0px;
         }
      }
-     @media(max-width: 420px){
-        .ks-header-6-wish{
-            display: none;
-        }
-     }
+//      @media(max-width: 420px){
+//         .ks-header-6-wish{
+//             display: none;
+//         }
+//      }
 
-    #top_menu > li > a,
-    #my_cart_2 .nav-link,
-    #my_wish .nav-link,
-    .ks-header-2-main .navbar-toggler,
-    .remove_after_content .nav-link,
-    .ks-search-trigger{
-        color: #fff;
-    }
-    .ks-header-2-main #top_menu > li > a span:after,
-    .ks-header-5 #top_menu > li > a span:after{
-        border-color: #fff;
-    }
+//     #top_menu > li > a,
+//     #my_cart_2 .nav-link,
+//     #my_wish .nav-link,
+//     .ks-header-2-main .navbar-toggler,
+//     .remove_after_content .nav-link,
+//     .ks-search-trigger{
+//         color: #fff;
+//     }
+//     .ks-header-2-main #top_menu > li > a span:after,
+//     .ks-header-5 #top_menu > li > a span:after{
+//         border-color: #fff;
+//     }
     .ks-header-offer-container{
         display: none;
     }
@@ -231,8 +228,8 @@ body.ks_transparent_header{
     .ks-header-11.o_affix_enabled {
         position: absolute;
         width: 100%;
-        padding-left: 5%;
-        padding-right: 5%;
+//         padding-left: 5%;
+//         padding-right: 5%;
         margin: 0 auto;
         left: 0;
         right: 0;
@@ -284,6 +281,7 @@ body.ks_transparent_header{
                 background: #141f1e !important;
                 a{
                     color: #fff !important;
+                    background-color: transparent;
                 }
             }
 
@@ -300,8 +298,8 @@ body.ks_transparent_header{
     }
 
     &.affix {
-        background: rgba(0, 0, 0, 0.4) !important;
-        box-shadow: none !important;
+//         background: rgba(0, 0, 0, 0.4) !important;
+//         box-shadow: none !important;
 
         .navbar-collapse {
             border: none !important;
@@ -378,35 +376,71 @@ body.ks_transparent_header{
     }
 }
 
-// .ks-header-11 .search_container .easy-autocomplete {
-//     width: auto !important;
-// }
-// .ks-header-11 .search_container input {
-//     width: 350px;
-//     height: 45px;
-//     background: #f7f7f7;
-//     margin-right: 10px;
-// }
-// .ks-header-11 .search_container button.btn.oe_search_button {
-//     position: absolute;
-//     font-size: 24px;
-//     right: 15px;
-//     background: transparent;
-//     padding: 0;
-//     line-height: 1;
-//     top: 8px;
-//     z-index: 101;
-// }
-//
-// @media(max-width: 540px){
-//     .ks-header-11 .ks-header-6-search form .oe_search_button {
-//         font-size: 19px !important;
-//         top: 18px !important;
-//         right: 10px !important;
-//     }
-// }
-//
-// .ks-header-11  #my_cart_2 a .ml-4 {
-//     margin-left: 0 !important;
-//     margin-top: -1px;
-// }
+.ks-header-11{
+    @media(max-width: 991px){
+       .ks-header-6-search{
+          max-width: 100%  !important;
+        }
+    }
+    @media (min-width: 992px){
+        #top_menu_collapse,
+        #top_menu_collapse_clone {
+            justify-content: start !important;
+        }
+        .container{
+            width: 100% !important;
+            padding-left: 0px;
+            .nav-link{
+                padding: 0.5rem 0.5rem;
+            }
+        }
+         #top_menu > li{
+            padding: 0 7px !important;
+        }
+    }
+    &.affixed{
+        background: $white !important;
+        box-shadow: 0 1px 3px #ccc !important;
+    }
+}
+body.ks_transparent_header{
+    &.js-menu-opened{
+        .ks-header-11.affixed{
+            background: transparent !important;
+            box-shadow: none !important;
+        }
+    }
+    .ks-header-11{
+        background: rgba(0, 0, 0, 0.4) !important;
+        #top_menu > li > a,
+        #my_cart_2 .nav-link,
+        #my_wish .nav-link,
+        .ks-header-2-main .navbar-toggler,
+        .remove_after_content .nav-link,
+        .ks-search-trigger{
+            color: #fff;
+        }
+
+        .ks-header-2-main #top_menu > li > a span:after,
+        .ks-header-5 #top_menu > li > a span:after{
+            border-color: #fff;
+        }
+        &.affixed{
+            background: $white !important;
+            box-shadow: 0 1px 3px #ccc !important;
+            #top_menu > li > a,
+            #my_cart_2 .nav-link,
+            #my_wish .nav-link,
+            .ks-header-2-main .navbar-toggler,
+            .remove_after_content .nav-link,
+            .ks-search-trigger{
+                color: #000;
+            }
+
+            .ks-header-2-main #top_menu > li > a span:after,
+            .ks-header-5 #top_menu > li > a span:after{
+                border-color: #000;
+            }
+        }
+    }
+}

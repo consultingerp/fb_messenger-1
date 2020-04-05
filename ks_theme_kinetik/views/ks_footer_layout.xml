@@ -30,20 +30,9 @@
                                 <div class="row">
                                     <div class="col-12 col-lg">
                                         <div class="newsletter">
-                                            <div class="row align-items-center justify-content-center">
-                                                <div class="col-12 col-md-4">
+                                            <div class="row align-items-center">
+                                                <div class="ks_footer_01 col-12 col-md-9 flex-nowrap d-flex align-items-center">
                                                     <h3>Newsletter Signup</h3>
-                                                </div>
-                                                <div class="col-12 col-md">
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control  border-radius-0 mr-2"
-                                                               placeholder="Enter Your Email Address"/>
-<!--                                                        <button class="btn btn-warning text-uppercase "><i class="fa fa-paper-plane"></i></button>-->
-                                                        <a role="button" t-attf-href="mailto:{{ res_company.email }}"
-                                                           class="btn btn-warning text-uppercase" id="o_contact_mail">
-                                                            <i class="fa fa-paper-plane"/>
-                                                        </a>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -396,14 +385,6 @@
                                                     And Receive 10% Off Your First Order
                                                 </strong>
                                             </p>
-                                            <div class="input-group pt-3">
-                                                <input type="text" class="form-control border-radius-0"
-                                                       placeholder="Enter Your Email Address"/>
-                                                <a role="button" t-attf-href="mailto:{{ res_company.email }}"
-                                                   class="btn btn-warning text-uppercase" id="o_contact_mail">
-                                                    <i class="fa fa-paper-plane"/>
-                                                </a>
-                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-4 col-lg-2 border-left py-3 py-lg-4">
@@ -558,13 +539,6 @@
                                             <h3>Newsletter Signup</h3>
                                         </div>
                                         <div class="col-12 col-md">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control"
-                                                       placeholder="Enter Your Email Address"/>
-                                                <button class="btn btn-warning text-uppercase border-radius-0">
-                                                    Subscribe
-                                                </button>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -706,12 +680,6 @@
                                             <h3 class="mb-3 mb-lg-4">Subscribe To Our Newsletter</h3>
                                             <p>Get The Latest News And Articles Sent Straight To Your Inbox Weekly</p>
                                             <div class="input-group pt-3">
-                                                <input type="text" class="form-control border-radius-0"
-                                                       placeholder="Enter Your Email Address"/>
-                                                <a role="button" t-attf-href="mailto:{{ res_company.email }}"
-                                                   class="btn btn-warning text-uppercase" id="o_contact_mail">
-                                                    <i class="fa fa-paper-plane"/>
-                                                </a>
                                             </div>
                                         </div>
                                         <div class="address pl-lg-5 d-none">
@@ -787,14 +755,6 @@
                                 <div class="row align-items-center justify-content-center">
                                     <div class="col-12 col-md-3">
                                         <h3>Newsletter Signup</h3>
-                                    </div>
-                                    <div class="col-12 col-md">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control"
-                                                   placeholder="Enter Your Email Address"/>
-                                            <button class="btn btn-warning text-uppercase border-radius-0">Subscribe
-                                            </button>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -936,12 +896,6 @@
                                         <h3 class="mb-3 mb-lg-4">Subscribe To Our Newsletter</h3>
                                         <p>Get The Latest News And Articles Sent Straight To Your Inbox Weekly</p>
                                         <div class="input-group pt-3">
-                                            <input type="text" class="form-control border-radius-0"
-                                                   placeholder="Enter Your Email Address"/>
-                                            <a role="button" t-attf-href="mailto:{{ res_company.email }}"
-                                               class="btn btn-warning text-uppercase" id="o_contact_mail">
-                                                <i class="fa fa-paper-plane"/>
-                                            </a>
                                         </div>
                                     </div>
                                     <div class="address pl-lg-5 d-none">
@@ -1021,6 +975,14 @@
                 <attribute name="class">d-none</attribute>
             </xpath>
         </template>
+
+    <template id="ks_news_letter" inherit_id="website_mass_mailing.s_newsletter_subscribe_form">
+        <xpath expr="//span[hasclass('input-group-append')]/a" position="replace">
+            <a role="button" href="#" class="btn btn-primary js_subscribe_btn">
+                <i class="fa fa-paper-plane"/>
+            </a>
+        </xpath>
+    </template>
 
     <template id="ks_lang_option" name="language">
         <t t-if="(request.is_frontend_multilang and len(languages) &gt; 1) or editable">
