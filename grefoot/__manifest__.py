@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','product','ks_theme_kinetik','checkout'],
+    'depends': ['base','product','ks_theme_kinetik','checkout','facebook_messenger_chat','payment_cash_on_delivery','sales_report_product_image','website_add_whatsapp','website_js_below_the_fold','website_lazy_load_image'],
 
     # always loaded
     'data': [
