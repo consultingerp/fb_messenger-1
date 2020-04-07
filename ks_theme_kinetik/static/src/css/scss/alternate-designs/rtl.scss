@@ -108,6 +108,14 @@
         .owl-stage-outer {
             direction: rtl;
         }
+
+        @media (max-width: 767.98px) {
+            .owl-nav {
+                .fa {
+                    transform: rotate(-180deg) !important;
+                }
+            }
+      }
     }
     .ks_main_for_hover_slider{
         .owl-stage-outer {
@@ -137,12 +145,6 @@
 #products_grid .ks-product-list-view .ks-product-list-mode .o_wsale_product_btn{
     justify-content: space-around;
     width: 100%;
-}
-
-html,
-body {
-    direction: ltr;
-    overflow: auto;
 }
 
 

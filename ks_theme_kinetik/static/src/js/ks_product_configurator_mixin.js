@@ -15,7 +15,7 @@ odoo.define('ks_theme_kinetik.ProductConfiguratorMixin', function (require) {
             arguments[1] = ks_avail;
             ProductConfiguratorMixin._onChangeCombinationStock.apply(this, arguments);
             var per_disc = ((arguments[2].list_price - arguments[2].price)/arguments[2].list_price)*100;
-            if (per_disc){
+            if (per_disc > 0){
                 $('.Percentage-offer').html('( ' + Math.floor(per_disc) + '% OFF)');
             }
             else{

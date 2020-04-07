@@ -103,13 +103,13 @@
     'website': "https://www.ksolves.com",
     'license': 'OPL-1',
     'currency': 'EUR',
-    'price': '170.0',
+    'price': '162.0',
     'category': 'Theme/Ecommerce',
     'support': 'sales@ksolves.com',
-    'version': '1.8.3',
+    'version': '1.8.9',
     'live_test_url': 'https://demokinetik.kappso.com',
     'depends': ['ks_theme_base', 'website_sale_wishlist', 'website_sale_comparison',
-                'website_sale_stock', 'website_rating','website_crm'],
+                'website_sale_stock', 'website_rating', 'website_crm', 'website_mass_mailing'],
     # always loaded
     'data': [
         'security/ir.model.access.csv',

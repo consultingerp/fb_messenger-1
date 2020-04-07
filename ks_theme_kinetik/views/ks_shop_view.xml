@@ -508,31 +508,7 @@
                     <t t-set="image_ids" t-value="product.product_image_ids"/>
                     <div t-attf-class="ks-product-list-mode {{'ks_shop_slider' if len(image_ids) and request.website.viewref('ks_theme_kinetik.shop_img_slider').active else ''}}">
                         <div class="oe_product_image">
-                            <a itemprop="url" t-att-href="product_href">
-                                <t t-if="request.website.viewref('ks_theme_kinetik.shop_img_slider').active">
-                                    <div class="ks_shop_product_slider">
-                                        <t t-if="len(image_ids)">
-                                            <div class="owl-carousel ks_main_for_hover_slider">
-                                                <div data-oe-id="0" t-attf-class="carousel-item#{'' ' active'}"
-                                                     itemprop="image" t-field="product.image"
-                                                     t-options="{'widget': 'image', 'class': 'ks_shop_product product_detail_img', 'alt-field': 'name', 'zoom': 'image', 'unique': product['__last_update']}"/>
-                                                <t t-if="len(image_ids)" t-foreach="image_ids" t-as="pimg">
-                                                    <div class="carousel-item active" t-field="pimg.image"
-                                                         t-options='{"widget": "image", "class": "ks_shop_product product_detail_img", "alt-field": "name", "zoom": "image" }'/>
-                                                </t>
-                                            </div>
-                                        </t>
-                                        <t t-else="">
-                                            <img class="ks_shop_product"
-                                                 t-attf-src="/web/image/product.template/#{product.id}/image/330x330"/>
-                                        </t>
-                                    </div>
-                                </t>
-                                <t t-else="">
-                                    <img class="ks_shop_product"
-                                         t-attf-src="/web/image/product.template/#{product.id}/image/330x330"/>
-                                </t>
-                            </a>
+                           <t t-call="ks_theme_kinetik.ks_shop_product_old"/>
                         </div>
                         <t t-if="show_publish">
                             <div id="website_published_button" class="" groups="sales_team.group_sale_manager">
@@ -1026,85 +1002,34 @@
             </div>
         </div>
     </template>
-    <!--    product slider at shop page-->
-    <template id="ks_product_slider_shop" name="Product Slider">
-        <div class="col-md-6 product-detail-carousel">
-            <t t-set="variant_img" t-value="product_variant and product_variant.image_variant"/>
-            <t t-set="image_ids" t-value="product.product_image_ids"/>
-            <div id="o-carousel-product" class="ks_horizontal_product_slider carousel slide"
-                 data-ride="carousel" data-interval="0">
-                <div class="carousel-outer">
-                    <div class="carousel-inner">
-                        <div t-if="variant_img" class="carousel-item active" itemprop="image"
-                             t-field="product_variant.image"
-                             t-options="{'widget': 'image', 'class': 'product_detail_img js_variant_img', 'alt-field': 'name', 'zoom': 'image', 'unique': str(product['__last_update']) + (str(product_variant['__last_update']) or '')}"/>
-                        <div t-attf-class="carousel-item#{'' if variant_img else ' active'}"
-                             itemprop="image" t-field="product.image"
-                             t-options="{'widget': 'image', 'class': 'product_detail_img', 'alt-field': 'name', 'zoom': 'image', 'unique': product['__last_update']}"/>
-                        <t t-if="len(image_ids)" t-foreach="image_ids" t-as="pimg">
-                            <t t-set="attachment_id"
-                               t-value="request.env['ir.attachment'].search([('res_field', '=', 'product_video'), ('res_id', '=', pimg.id)]).id"/>
-                            <t t-if="attachment_id">
-                                <div class="carousel-item">
-                                    <iframe t-att-id="pimg.id" class="embed-responsive-item"
-                                            t-att-src="'/web/content/' + str(attachment_id)"
-                                            allowFullScreen="true" frameborder="0" autoplay="1"
-                                            allow="autoplay"/>
-                                </div>
-                            </t>
-                            <t t-else="">
-                                <div class="carousel-item" t-field="pimg.image"
-                                     t-options='{"widget": "image", "class": "product_detail_img", "alt-field": "name", "zoom": "image" }'/>
-                            </t>
-                        </t>
-                    </div>
 
-                    <t t-if="len(image_ids) or variant_img">
-                        <a class="carousel-control-prev" href="#o-carousel-product" role="button"
-                           data-slide="prev">
-                            <span class="fa fa-chevron-left" role="img" aria-label="Previous"
-                                  title="Previous"/>
-                        </a>
-                        <a class="carousel-control-next" href="#o-carousel-product" role="button"
-                           data-slide="next">
-                            <span class="fa fa-chevron-right" role="img" aria-label="Next"
-                                  title="Next"/>
-                        </a>
+    <template id="ks_shop_product_old">
+        <t t-set="image_ids" t-value="product.product_image_ids"/>
+        <a itemprop="url" t-att-href="product_href" class="ks_prod_img">
+            <t t-if="request.website.viewref('ks_theme_kinetik.shop_img_slider').active">
+                <div class="ks_shop_product_slider">
+                    <t t-if="len(image_ids)">
+                        <div class="owl-carousel ks_main_for_hover_slider">
+                            <div data-oe-id="0" t-attf-class="carousel-item#{'' ' active'}"
+                                 itemprop="image" t-field="product.image"
+                                 t-options="{'widget': 'image', 'class': 'ks_shop_product product_detail_img', 'alt-field': 'name', 'zoom': 'image', 'unique': product['__last_update']}"/>
+                            <t t-if="len(image_ids)" t-foreach="image_ids" t-as="pimg">
+                                <div class="carousel-item active" t-field="pimg.image"
+                                     t-options='{"widget": "image", "class": "ks_shop_product product_detail_img", "alt-field": "name", "zoom": "image" }'/>
+                            </t>
+                        </div>
+                    </t>
+                    <t t-else="">
+                        <img class="ks_shop_product"
+                             t-attf-src="/web/image/product.template/#{product.id}/image/330x330"/>
                     </t>
                 </div>
-
-                <div class="carousel-indicators" t-if="len(image_ids) or variant_img">
-                    <div t-if="variant_img" data-target="#o-carousel-product" data-slide-to="0"
-                         class="active">
-                        <img class="img img-fluid js_variant_img_small"
-                             t-attf-src="/website/image/product.product/{{product_variant.id}}/image/90x90"
-                             t-att-alt="product.name"/>
-                    </div>
-                    <div id="ks_multi_image_horiz"
-                         class=" ks_multi_image_horizontal owl-carousel owl-theme">
-                        <div data-target="#o-carousel-product"
-                             t-att-data-slide-to="1 if variant_img else '0'"
-                             t-att-class="'ks_active_variant_image currently_active' if variant_img else 'ks_active_variant_image currently_active active'">
-                            <img class="img img-fluid"
-                                 t-attf-src="/website/image/product.template/{{product.id}}/image/90x90"
-                                 t-att-alt="product.name"/>
-                        </div>
-                        <t t-if="len(image_ids)" t-foreach="image_ids" t-as="pimg">
-                            <div class="ks_active_variant_image" data-target="#o-carousel-product"
-                                 t-att-data-slide-to="pimg_index + (variant_img and 2 or 1)">
-                                <t t-set="attachment_id"
-                                   t-value="request.env['ir.attachment'].search([('res_field', '=', 'product_video'), ('res_id', '=', pimg.id)]).id"/>
-                                <img class="img img-fluid"
-                                     t-attf-src="/website/image/product.image/{{pimg.id}}/image/90x90"
-                                     t-att-alt="pimg.name"/>
-                                <i t-if="attachment_id"
-                                   class="fa fa-2x fa-play-circle-o o_product_video_thumb"/>
-                            </div>
-                        </t>
-                    </div>
-                </div>
-            </div>
-        </div>
+            </t>
+            <t t-else="">
+                <img class="ks_shop_product"
+                     t-attf-src="/web/image/product.template/#{product.id}/image/330x330"/>
+            </t>
+        </a>
     </template>
 </odoo>
 

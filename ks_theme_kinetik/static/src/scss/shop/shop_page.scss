@@ -222,7 +222,7 @@
     .active {
         .product-card {
             transition: 0.5s ease-in-out;
-            opacity: 0;
+            opacity: 1;
             animation: fpMove1 0.36s ease-in-out forwards;
 
             &:nth-child(4n - 2) {
@@ -675,7 +675,7 @@ footer.bg-light {
             .owl-dots {
                position: absolute;
                width: 100%;
-               bottom: -30px;
+               bottom: 10px;
                text-align: center;
 
                .owl-dot {
@@ -1626,7 +1626,7 @@ footer.bg-light {
 
 // shop page modify
 .oe_product .ribbon-wrapper{
-    z-index: 20;
+    z-index: 10;
 }
 
 .ks-product-list {
@@ -2761,15 +2761,8 @@ input:not([type="radio"]):not([type="checkbox"]) {
 }
 
 .ks_shop_slider {
-
-    &:hover{
-        .ks_add_wishlist {
-            display:none !important;
-        }
-    }
-
     .ks_hover_data .o_add_compare{
-        display:none !important;
+//         display:none !important;
     }
 
     .owl-dots{
@@ -2780,5 +2773,22 @@ input:not([type="radio"]):not([type="checkbox"]) {
         .owl-dots{
             display : block;
         }
+    }
+}
+
+.ks-slider-products,
+.ks_product_grid_responsive,
+.product-card {
+    .fp__info {
+        .fp__price {
+            justify-content: flex-start !important;
+        }
+    }
+}
+
+.ks_shop_product_slider  {
+    .owl-stage-outer {
+        margin: auto;
+        max-width: 250px;
     }
 }

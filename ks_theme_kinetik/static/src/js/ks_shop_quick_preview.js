@@ -38,17 +38,20 @@ odoo.define('website_product_quick_preview', function(require){
             $('#product_modal').html("")
             ajax.jsonRpc("/shop/product", 'call', {'product_id':ks_prod_id}).then(function (data_list) {
             if(data_list[1]==0){
-            var data=data_list[0];
-            $('.oe_website_sale div:first').append(modal_html);
-            $('#product_modal').html(data);
-            $('#product_quick_preview_Modal').modal('show');
-             $("#product_quick_preview_Modal").modal({
-                show: 'true'
-            });
+                var data=data_list[0];
+                $('.oe_website_sale div:first').append(modal_html);
+                $('#product_modal').html(data);
+                $('#product_quick_preview_Modal').modal('show');
+                 $("#product_quick_preview_Modal").modal({
+                    show: 'true'
+                });
             }
             else{
                 $(e.currentTarget).parent().find('.a-submit').click()
 
+            }
+            if(data_list[2]['per_desc'] > 0){
+                $('.ks_quick_prev_prod_detail .Percentage-offer').html(' ( ' + Math.floor(data_list[2]['per_desc']) + '% OFF)');
             }
 //.......................................for slider of quick preview......................................................................
             var quick_pre_product_length = $('.ks_thumb .ks_active_variant_image').length

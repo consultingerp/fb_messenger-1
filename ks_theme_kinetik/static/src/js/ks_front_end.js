@@ -1,11 +1,16 @@
 $(document).ready(function(){
 
+    $('.ks_mega_menu').click(function(ev){
+        location.href = $(ev.currentTarget).parent().attr('href');
+    })
+
     $($('#country_id option')[0]).text('Select Country')
     $($('.div_state option')[0]).text('Select State/Province')
 
     if ($('header').length==1){
     $('header').addClass('o_affix_disabled')
     }
+
     $('.size_chart_preview_modal iframe').load(function(){
 //        $($('iframe').contents().find('body')[0]).children().addClass("size_chart_iframe_content")
         $($('.size_chart_preview_modal iframe').contents().find('body')[0]).css('text-align','center')

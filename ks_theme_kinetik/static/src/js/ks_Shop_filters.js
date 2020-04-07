@@ -56,75 +56,77 @@ odoo.define('ks_ecommerce_theme.ks_footer', function (require) {
                 })
 
     $(document).ready(function(){
-                  var brand=$('#ksBrandContainer').find('.active').text().trim()
-                  if ($('#o_shop_collapse_category')){
-                  if ( !$('#o_shop_collapse_category').find('li a.active').hasClass('o_not_editable')){
-                      $('#o_shop_collapse_category').find('li a.active').addClass('ks_active')
-                  }}
-                  var ks_cate=$('.ks_active').text().trim();
+        var brand=$('#ksBrandContainer').find('.active').text().trim()
+        if ($('#o_shop_collapse_category')){
+            if ( !$('#o_shop_collapse_category').find('li a.active').hasClass('o_not_editable')){
+                $('#o_shop_collapse_category').find('li a.active').addClass('ks_active')
+        }}
+        var ks_cate=$('.ks_active').text().trim();
 
-                  _.each($('input[name="brnd"]:checked'), function(ev) {
-                     if (ev){
-                      $('.filter-selectedFilterContainer').removeClass('d-none');
-                      $('.brand_filter_list').removeClass('d-none');
-                      $('.brand_filter_list').append('<div class="ks_var_filter_list '+$(ev).val()+'"></div>')
-                      $('.brand_filter').removeClass('d-none');
-                      $('.'+$(ev).val()).append($(ev).parent().html());
-                      $('.'+$(ev).val()).append('<span class="remove_brand_filter fa fa-times"></span>')
-                      $('.'+$(ev).val()).find('input').addClass('d-none')
-                      }
-                        })
-                    _.each($('input[name="attrib"]:checked'), function(ev) {
-                     if (ev){
-                       $('.filter-selectedFilterContainer').removeClass('d-none');
-                     $('.variants_filter_list').removeClass('d-none');
-                      $('.variants_filter_list').append('<div class="ks_var_filter_list '+$(ev).val()+'"></div>')
-                      $('.variants_filter').removeClass('d-none');
-                      $('.'+$(ev).val()).append($(ev).parent().html());
-                      if ($(ev).attr('title')){
-                      var color=$(ev).attr('title');
-//                      $('.'+$(ev).val()).append('<label>'+color+'</label>');
-                      }
-                      $('.'+$(ev).val()).append('<span class="remove_variant_filter fa fa-times"></span>')
-                      $('.'+$(ev).val()).find('input').addClass('d-none')
-                      }
-                        })
-                        if ($('select[name="attrib"]  option:selected').val()!=""){
-                       _.each($('select[name="attrib"]  option:selected'), function(ev) {
-                        if(ev){
-                           $('.filter-selectedFilterContainer').removeClass('d-none');
-                         $('.variants_filter_list').removeClass('d-none');
-                         $('.variants_filter_list').append('<div class="ks_var_filter_list '+$(ev).val()+'"></div>');
-                         $('.variants_filter').removeClass('d-none');
-                         $('.'+$(ev).val()).append('<label>'+$(ev).text()+'</label>')
-                         $('.'+$(ev).val()).append('<span class="remove_variant_filter fa fa-times"></span>')
-                        }
-                        })}
-                  if (ks_cate){
-                   $('.filter-selectedFilterContainer').removeClass('d-none');
-                  $('.filterList').append('<label class="active_Category">'+'Category: </label><span class=ks-selected-items >'+ks_cate+'</span> <a class="remove_filter fa fa-times"><a/>')
-                    }
-                    var selected_min=parseInt($('#ks-selected_input_min_hidden').val())
-                    var selected_max=parseInt($('#ks-selected_input_max_hidden').val())
-                    var min=parseInt($('#ks-price-filter').attr('data-slider-min'));
-                    var max=parseInt($('#ks-price-filter').attr('data-slider-max'));
-                    if ($('.ks_filter_button').length){
-                    if ($('#ks-price-filter').attr('data-slider-min')==undefined){
-                        min=0
-                    }
-                    if ($('#ks-price-filter').attr('data-slider-max')==undefined){
-                        max=0
-                    }}
-                    if (((selected_min)>min | (selected_max)<max) && $('#ks-price-filter').length !=0){
-                         $('.filter-selectedFilterContainer').removeClass('d-none');
-                         $('.price_filter_list').append('<label id=price_list_shop>Price: </label><span class=ks-selected-items>'+selected_min+'-'+selected_max+'</span><a class="remove_price_filter fa fa-times"><a/>')
-                       }
-                     if ($('.dropdown_sorty_by button.dropdown-toggle').find('span').text().trim().split(':')[0]==='Sorting by '){
-                            var ks_order=$('.dropdown_sorty_by button.dropdown-toggle').find('span').text().trim().split(':')[1]
-                            $('.filter-selectedFilterContainer').removeClass('d-none');
-                            $('.SortByList').append('<label id=order_list_shop>Sort By: </label><span class=ks-selected-items>'+ks_order+'</span><a class="remove_order_filter fa fa-times"><a/>')
-                  }
-                })
+        _.each($('input[name="brnd"]:checked'), function(ev) {
+            if (ev){
+                $('.filter-selectedFilterContainer').removeClass('d-none');
+                $('.brand_filter_list').removeClass('d-none');
+                $('.brand_filter_list').append('<div class="ks_var_filter_list '+$(ev).val()+'"></div>')
+                $('.brand_filter').removeClass('d-none');
+                $('.'+$(ev).val()).append($(ev).parent().html());
+                $('.'+$(ev).val()).append('<span class="remove_brand_filter fa fa-times"></span>')
+                $('.'+$(ev).val()).find('input').addClass('d-none')
+            }
+        })
+        _.each($('input[name="attrib"]:checked'), function(ev) {
+            if (ev){
+                $('.filter-selectedFilterContainer').removeClass('d-none');
+                $('.variants_filter_list').removeClass('d-none');
+                $('.variants_filter_list').append('<div class="ks_var_filter_list '+$(ev).val()+'"></div>')
+                $('.variants_filter').removeClass('d-none');
+                $('.'+$(ev).val()).append($(ev).parent().html());
+                if ($(ev).attr('title')){
+                    var color=$(ev).attr('title');
+                //                      $('.'+$(ev).val()).append('<label>'+color+'</label>');
+                }
+                $('.'+$(ev).val()).append('<span class="remove_variant_filter fa fa-times"></span>')
+                $('.'+$(ev).val()).find('input').addClass('d-none')
+            }
+        })
+        if ($('select[name="attrib"]  option:selected').val()!=""){
+            _.each($('select[name="attrib"]  option:selected'), function(ev) {
+                if(ev){
+                    $('.filter-selectedFilterContainer').removeClass('d-none');
+                    $('.variants_filter_list').removeClass('d-none');
+                    $('.variants_filter_list').append('<div class="ks_var_filter_list '+$(ev).val()+'"></div>');
+                    $('.variants_filter').removeClass('d-none');
+                    $('.'+$(ev).val()).append('<label>'+$(ev).text()+'</label>')
+                    $('.'+$(ev).val()).append('<span class="remove_variant_filter fa fa-times"></span>')
+                }
+            })
+        }
+        if (ks_cate){
+            $('.filter-selectedFilterContainer').removeClass('d-none');
+            $('.filterList').append('<label class="active_Category">'+'Category: </label><span class=ks-selected-items >'+ks_cate+'</span> <a class="remove_filter fa fa-times"><a/>')
+        }
+        var selected_min=parseInt($('#ks-selected_input_min_hidden').val())
+        var selected_max=parseInt($('#ks-selected_input_max_hidden').val())
+        var min=parseInt($('#ks-price-filter').attr('data-slider-min'));
+        var max=parseInt($('#ks-price-filter').attr('data-slider-max'));
+        if ($('.ks_filter_button').length){
+            if ($('#ks-price-filter').attr('data-slider-min')==undefined){
+                min=0
+            }
+            if ($('#ks-price-filter').attr('data-slider-max')==undefined){
+                max=0
+        }}
+        if (((selected_min)>min | (selected_max)<max) && $('#ks-price-filter').length !=0){
+            $('.filter-selectedFilterContainer').removeClass('d-none');
+            $('.price_filter_list').append('<label id=price_list_shop>Price: </label><span class=ks-selected-items>'+selected_min+'-'+selected_max+'</span><a class="remove_price_filter fa fa-times"><a/>')
+        }
+        if ($('.dropdown_sorty_by button.dropdown-toggle').find('span').text().trim().split(':')[0]==='Sorting by '){
+            var ks_order=$('.dropdown_sorty_by button.dropdown-toggle').find('span').text().trim().split(':')[1]
+            $('.filter-selectedFilterContainer').removeClass('d-none');
+            $('.SortByList').append('<label id=order_list_shop>Sort By: </label><span class=ks-selected-items>'+ks_order+'</span><a class="remove_order_filter fa fa-times"><a/>')
+        }
+    })
+
      $(document).on('click','.remove_order_filter',function(ev){
                      _.each($('.ks_sortable'), function(e) {
                             if ($(e).parent().text().trim()== $(ev.currentTarget).parent().text().split(':')[1].trim()){

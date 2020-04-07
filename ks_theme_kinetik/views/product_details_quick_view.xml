@@ -15,7 +15,6 @@
                     <div class="row">
                         <div class="col-md-8">
                             <div class="form-inline justify-content-end">
-<!--                                <t t-call="website_sale.search"/>-->
                                 <t>
                                     <t t-set="_classes">ml-2</t>
                                 </t>
@@ -23,78 +22,24 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
-                            <t t-set="variant_img" t-value="product_variant and product_variant.image_variant"/>
-                            <t t-set="image_ids" t-value="product.product_image_ids"/>
-                            <div id="o-carousel-product" class="carousel slide" data-ride="carousel" data-interval="0">
-                                <div class="carousel-outer">
-                                    <div class="owl-carousel ks_main owl-theme">
-                                        <!--                                                    <a t-att-href="image_url" id="product_image" class="product_img">-->
-                                        <div data-oe-id="0" t-if="variant_img" class="ks_img_vrnt carousel-item active"
-                                             itemprop="image"
-                                             t-field="product_variant.image"
-                                             t-options="{'widget': 'image', 'class': 'product_detail_img js_variant_img', 'alt-field': 'name', 'zoom': 'image', 'unique': str(product['__last_update']) + (str(product_variant['__last_update']) or '')}"/>
-                                        <div t-att-data-oe-id="1 if variant_img else '0'" t-attf-class="carousel-item active">
-                                            <img class="img img-fluid"
-                                                 t-attf-src="/website/image/product.template/{{product.id}}/image/330x330"
-                                                 t-att-alt="product.name"/>
-                                        </div>
-                                        <t t-if="len(image_ids)" t-foreach="image_ids" t-as="pimg">
-                                            <t t-set="attachment_id"
-                                               t-value="request.env['ir.attachment'].search([('res_field', '=', 'product_video'), ('res_id', '=', pimg.id)]).id"/>
-                                            <t t-if="attachment_id">
-                                                <div t-att-data-oe-id="pimg_index + (variant_img and 2 or 1)" class="carousel-item active">
-                                                    <iframe t-att-id="pimg.id" class="embed-responsive-item"
-                                                            t-att-src="'/web/content/' + str(attachment_id)"
-                                                            allowFullScreen="true" frameborder="0" autoplay="1"
-                                                            allow="autoplay"/>
-                                                </div>
-                                            </t>
-                                            <t t-else="">
-                                                <div t-att-data-oe-id="pimg_index + (variant_img and 2 or 1)" class="carousel-item active">
-                                                    <img class="img img-fluid"
-                                                         t-attf-src="/website/image/product.image/{{pimg.id}}/image/330x330"
-                                                         t-att-alt="pimg.name"/>
-                                                </div>
-                                            </t>
-                                        </t>
-                                        <!--                                                    </a>-->
-                                    </div>
-                                </div>
-
-                                <ol class="carousel-indicators" t-if="len(image_ids) or variant_img">
-                                    <div class="owl-carousel ks_thumb owl-theme">
-                                        <li t-if="variant_img" data-target="#o-carousel-product" data-slide-to="0"
-                                            class="ks_img_vrnt ks-vs-img ks_active_variant_image active">
-                                            <img class="img img-fluid js_variant_img_small"
-                                                 t-attf-src="/web/image/product.product/{{product_variant.id}}/image/90x90"
-                                                 t-att-alt="product.name"/>
-                                        </li>
-                                        <li data-target="#o-carousel-product"
-                                            t-att-data-slide-to="1 if variant_img else '0'"
-                                            t-att-class="'ks-vs-img ks_active_variant_image' if variant_img else 'ks-vs-img ks_active_variant_image active'">
-                                            <img class="img img-fluid"
-                                                 t-attf-src="/web/image/product.template/{{product.id}}/image/90x90"
-                                                 t-att-alt="product.name"/>
-                                        </li>
-                                        <t t-if="len(image_ids)" t-foreach="image_ids" t-as="pimg">
-                                            <li data-target="#o-carousel-product"
-                                                class="ks-vs-img ks_active_variant_image"
-                                                t-att-data-slide-to="pimg_index + (variant_img and 2 or 1)">
-                                                <t t-set="attachment_id"
-                                                   t-value="request.env['ir.attachment'].search([('res_field', '=', 'product_video'), ('res_id', '=', pimg.id)]).id"/>
-                                                <img class="img img-fluid"
-                                                     t-attf-src="/website/image/product.image/{{pimg.id}}/image/90x90"
-                                                     t-att-alt="pimg.name"/>
-                                                <i t-if="attachment_id"
-                                                   class="fa fa-2x fa-play-circle-o o_product_video_thumb"/>
-                                            </li>
-                                        </t>
-                                    </div>
-                                </ol>
-                            </div>
+                        <div class="col-md-6 ks_product_quick_preview">
+                            <t t-if="request.website.viewref('ks_theme_kinetik.ks_multiimage_layout').active">
+                                <t t-call="ks_theme_kinetik.ks_product_image_slider">
+                                    <t t-set="div_01_class" t-value="'carousel-outer ks_vert_slide'"/>
+                                    <t t-set="ol_class" t-value="'ks_vs_slide'"/>
+                                    <t t-set="ol_div_class" t-value="'ks_vert_slider owl-carousel ks_thumb owl-theme'"/>
+                                </t>
+                            </t>
+                            <t t-else="">
+                                <t t-call="ks_theme_kinetik.ks_product_image_slider">
+                                    <t t-set="div_01_class" t-value="'carousel-outer'"/>
+                                    <t t-set="ol_class" t-value="'carousel-indicators'"/>
+                                    <t t-set="ol_div_class"
+                                       t-value="'ks_multi_image_horizontal owl-carousel ks_thumb owl-theme'"/>
+                                </t>
+                            </t>
                         </div>
-                        <div class="col-md-6" id="product_details">
+                        <div class="col-md-6 ks_quick_prev_prod_detail" id="product_details">
                             <h1 itemprop="name" t-field="product.name">Product Name</h1>
                             <span itemprop="url" style="display:none;"
                                   t-esc="'%sshop/product/%s' % (request.httprequest.url_root, slug(product))"/>
@@ -133,13 +78,6 @@
                             <p t-else="" class="alert alert-warning">This product has no valid combination.</p>
                             <hr t-if="product.description_sale"/>
                             <hr/>
-                            <!--                            <p class="text-muted mt-4">-->
-                            <!--                                30-day money-back guarantee-->
-                            <!--                                <br/>-->
-                            <!--                                Free Shipping in U.S.-->
-                            <!--                                <br/>-->
-                            <!--                                Buy now, get in 2 days-->
-                            <!--                            </p>-->
                             <div class="col-12">
                                 <div class="o_not_editable">
                                     <p t-field="product.description_sale"/>
@@ -148,13 +86,11 @@
                         </div>
                     </div>
                 </section>
-<!--                <div itemprop="description" t-field="product.website_description" class="oe_structure mt16"-->
-<!--                     id="product_full_description"/>-->
+                <!--                <div itemprop="description" t-field="product.website_description" class="oe_structure mt16"-->
+                <!--                     id="product_full_description"/>-->
             </div>
         </t>
     </template>
-
-
 
 
 </odoo>

@@ -12,4 +12,10 @@
             </div>
         </div>
     </t>
+    <t t-name="ks_shop_new">
+        <a itemprop="url" t-att-href="href">
+            <img class="ks_shop_product"
+                 t-att-src="'/web/image/product.template/'+ product_id +'/image/330x330'"/>
+        </a>
+    </t>
 </templates>

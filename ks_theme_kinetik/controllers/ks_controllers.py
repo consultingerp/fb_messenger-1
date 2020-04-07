@@ -253,3 +253,17 @@ class WebsiteSale(WebsiteSale):
                 'UPDATE product_template_res_users SET recently_viewed_date=%s WHERE product_template_id=%s and res_user_id=%s',
                 (fields.Datetime.now(), product.id, request.env.user.id))
         return request.render("website_sale.product", values.qcontext)
+
+    @http.route(["/shop/product/slider"], type='json', auth="public", methods=['POST'], website=True, csrf=True)
+    def product_image_slider(self, **kw):
+
+        ks_shop_product_enable = request.website.viewref('ks_theme_kinetik.shop_img_slider').active
+        if ks_shop_product_enable:
+            product_id = kw['product_id']
+            href = kw['href']
+            product = request.env['product.template'].browse(int(kw['product_id']))
+            values = {
+                'product': product,
+                'product_href': href,
+            }
+            return request.env['ir.ui.view'].render_template("ks_theme_kinetik.ks_shop_product_old", values)

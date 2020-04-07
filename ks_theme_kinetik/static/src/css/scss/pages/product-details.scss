@@ -920,12 +920,13 @@
 
 .product_timer{
     .ks_timer_box{
-         margin-top: -20px;
+        margin-top: -20px;
         display: flex;
         align-items: center;
         flex-wrap: wrap;
         width: 100%;
         padding: 0px;
+        margin-left: -10px;
 
         background: $primary;
         color: #fff;
@@ -938,7 +939,7 @@
     .ks_product_timer_title {
         font-weight: 600;
         font-size: 18px;
-        padding-left: 20px;
+        padding-left: 10px !important;
     }
     .flip-clock-wrapper{
         background: #fff;
@@ -1221,6 +1222,25 @@
                 right: -30px !important;
                 top: -46px;
               }
+            }
+        }
+    }
+}
+@media(min-width: 992px){
+    .ks_product_quick_preview{
+        .ks_vs_slide .owl-carousel{
+            @media(min-width: 1280px){
+                left: -110px;
+            }
+            .owl-stage .owl-item{
+                margin-right:5px;
+                > .ks_active_variant_image{
+                    margin-top: 2px;
+                    .o_product_video_thumb{
+                        top: 25px;
+                        left: 8px;
+                    }
+                }
             }
         }
     }
