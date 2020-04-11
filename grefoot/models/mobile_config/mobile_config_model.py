@@ -68,6 +68,8 @@ class grefoot_mobile_config(models.Model):
 
     setting_page = fields.Char(string="Setting page")
 
+    manager_page = fields.Char(string="Manger page")
+
     admob = fields.Char(string="Admob")
 
     ad_unit_id_banner = fields.Char(string="Ad Unit Id Banner")

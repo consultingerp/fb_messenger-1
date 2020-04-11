@@ -84,6 +84,8 @@ class Grefoot(http.Controller):
                     "birthdate": "",
                     "lat": "",
                     "long": "",
+                    "street": partner.street,
+                    "parent_id": partner.parent_id,
                     "mobile": partner.mobile,
                     "lang": partner.lang,
                     "country_id": partner.country_id.id,
@@ -96,6 +98,7 @@ class Grefoot(http.Controller):
                     "gender": "",
                     "debit": partner.debit,
                     "credit": partner.credit,
+                    "type": partner.type,
                     "password": data['password']
                 }
             else:
