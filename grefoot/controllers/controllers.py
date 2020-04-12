@@ -127,9 +127,6 @@ class Grefoot(http.Controller):
 
         records = http.request.env[model].sudo().search_read(domain, fields, offset, limit, order)
 
-        if 'product_tmpl_id' in fields:
-            for rec in records:
-                rec['product_tmpl_id'] = rec['product_tmpl_id'][0]
 
         return {'code':200,'records':records}
 
