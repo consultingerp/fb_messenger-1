@@ -48,6 +48,7 @@
                 <field name="intro_page" />
                 <field name="my_orders_page" />
                 <field name="news_page" />
+                <field name="manager_page"/>
                 <field name="wish_list_page" />
                 <field name="shipping_address_page" />
                 <field name="about_us_page" />
